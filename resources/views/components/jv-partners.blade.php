@@ -39,32 +39,37 @@
                     </p>
                 </div>
 
-                {{-- Mission & Vision Light Green Panel --}}
-                <div class="bg-gradient-to-r from-emerald-50/80 to-green-50/50 rounded-2xl p-4 sm:p-5 border border-green-100/80 space-y-3">
-                    {{-- Mission --}}
-                    <div class="flex items-start space-x-3.5">
-                        <img src="{{ asset('images/assets/mission.png') }}" 
-                             alt="Mission" 
-                             class="w-6 h-6 flex-shrink-0 mt-0.5 object-contain">
-                        <div>
-                            <span class="text-xs font-bold text-gray-900 block">Mission</span>
-                            <p class="text-[11px] sm:text-xs text-gray-600 leading-relaxed mt-0.5">
-                                To develop a safe, reliable and customer-focused City Gas Distribution network that delivers the benefits of natural gas to the people and businesses of Arunachal Pradesh.
-                            </p>
+                {{-- Mission & Vision Panel with Custom Illustrated Background matching 2nd screenshot --}}
+                <div class="relative rounded-2xl md:rounded-[22px] p-4 sm:p-5 shadow-xs border border-gray-100/90 overflow-hidden bg-cover bg-center bg-no-repeat space-y-3 sm:space-y-3.5"
+                     style="background-image: url('{{ asset('images/assets/mission_vission_background.png') }}');">
+                    
+                    {{-- Mission Row --}}
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-6">
+                        <div class="flex items-center space-x-2.5 sm:w-28 shrink-0">
+                            <img src="{{ asset('images/assets/mission.png') }}" 
+                                 alt="Mission" 
+                                 class="w-6 h-6 object-contain shrink-0">
+                            <span class="text-sm font-bold text-gray-900">Mission</span>
                         </div>
+                        <p class="text-[11.5px] sm:text-xs text-gray-600 leading-relaxed flex-1">
+                            To develop a safe, reliable and customer-focused City Gas Distribution network that delivers the benefits of natural gas to the people and businesses of Arunachal Pradesh.
+                        </p>
                     </div>
 
-                    {{-- Vision --}}
-                    <div class="flex items-start space-x-3.5 pt-2.5 border-t border-green-200/50">
-                        <img src="{{ asset('images/assets/vission.png') }}" 
-                             alt="Vision" 
-                             class="w-6 h-6 flex-shrink-0 mt-0.5 object-contain">
-                        <div>
-                            <span class="text-xs font-bold text-gray-900 block">Vision</span>
-                            <p class="text-[11px] sm:text-xs text-gray-600 leading-relaxed mt-0.5">
-                                To emerge as a trusted City Gas Distribution company, enabling cleaner energy access and contributing to the sustainable development of Arunachal Pradesh.
-                            </p>
+                    {{-- Horizontal Divider --}}
+                    <div class="border-t border-green-200/50"></div>
+
+                    {{-- Vision Row --}}
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-6">
+                        <div class="flex items-center space-x-2.5 sm:w-28 shrink-0">
+                            <img src="{{ asset('images/assets/vission.png') }}" 
+                                 alt="Vision" 
+                                 class="w-6 h-6 object-contain shrink-0">
+                            <span class="text-sm font-bold text-gray-900">Vision</span>
                         </div>
+                        <p class="text-[11.5px] sm:text-xs text-gray-600 leading-relaxed flex-1">
+                            To emerge as a trusted City Gas Distribution company, enabling cleaner energy access and contributing to the sustainable development of Arunachal Pradesh.
+                        </p>
                     </div>
                 </div>
 
