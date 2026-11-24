@@ -1,12 +1,68 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
-    {{-- Contained Rounded Hero Card Matching Figma 1:1 using proper assets --}}
-    <div class="relative w-full rounded-2xl md:rounded-[28px] overflow-hidden shadow-xs border border-gray-100 bg-white" x-data="heroSlider">
+    {{-- Contained Rounded Hero Card Matching Figma 1:1 with 3 Slides Carousel --}}
+    <div class="relative w-full rounded-2xl md:rounded-[28px] overflow-hidden shadow-xs border border-gray-100 bg-white" 
+         x-data="{
+             currentSlide: 0,
+             totalSlides: 3,
+             timer: null,
+             init() {
+                 this.startAutoplay();
+             },
+             next() {
+                 this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                 this.resetAutoplay();
+             },
+             prev() {
+                 this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                 this.resetAutoplay();
+             },
+             startAutoplay() {
+                 this.timer = setInterval(() => {
+                     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                 }, 3000);
+             },
+             resetAutoplay() {
+                 clearInterval(this.timer);
+                 this.startAutoplay();
+             }
+         }">
         
-        {{-- High-Resolution Hero Visual from public/images/assets/Group 1000002719.png --}}
+        {{-- High-Resolution Hero Visuals (Group 1000002719.png, hero_2.png, hero_3.png) --}}
         <div class="relative w-full overflow-hidden">
-            <img src="{{ asset('images/assets/Group 1000002719.png') }}" 
-                 alt="Connecting Arunachal Pradesh to a Cleaner Energy Future" 
-                 class="w-full h-auto object-cover block select-none">
+            {{-- Slide 1 --}}
+            <div x-show="currentSlide === 0" 
+                 x-transition:enter="transition-opacity duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 class="w-full">
+                <img src="{{ asset('images/assets/Group 1000002719.png') }}" 
+                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 1" 
+                     class="w-full h-auto object-cover block select-none">
+            </div>
+
+            {{-- Slide 2 --}}
+            <div x-show="currentSlide === 1" 
+                 x-cloak
+                 x-transition:enter="transition-opacity duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 class="w-full">
+                <img src="{{ asset('images/assets/hero_2.png') }}" 
+                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 2" 
+                     class="w-full h-auto object-cover block select-none">
+            </div>
+
+            {{-- Slide 3 --}}
+            <div x-show="currentSlide === 2" 
+                 x-cloak
+                 x-transition:enter="transition-opacity duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 class="w-full">
+                <img src="{{ asset('images/assets/hero_3.png') }}" 
+                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 3" 
+                     class="w-full h-auto object-cover block select-none">
+            </div>
 
             {{-- White Cutout Pocket with Inverted Fillet Radii matching Figma 2nd screenshot 1:1 --}}
             <div class="absolute bottom-0 right-0 bg-white p-1.5 sm:p-2 md:p-2.5 rounded-tl-2xl sm:rounded-tl-3xl z-20 flex items-center space-x-1.5 sm:space-x-2">

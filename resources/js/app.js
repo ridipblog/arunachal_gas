@@ -32,7 +32,7 @@ Alpine.data('fontScaler', () => ({
 // Hero Slider Alpine component
 Alpine.data('heroSlider', () => ({
     activeSlide: 0,
-    totalSlides: 2,
+    totalSlides: 3,
     timer: null,
     init() {
         this.startAutoplay();
@@ -52,7 +52,7 @@ Alpine.data('heroSlider', () => ({
     startAutoplay() {
         this.timer = setInterval(() => {
             this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
-        }, 7000);
+        }, 3000);
     },
     resetAutoplay() {
         clearInterval(this.timer);
