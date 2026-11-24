@@ -1,9 +1,56 @@
 <section id="development-targets" class="py-12 sm:py-16 bg-white relative z-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{-- Contained Rounded Card with Pipeline Construction Background --}}
-        <div class="relative w-full rounded-3xl md:rounded-[36px] overflow-hidden shadow-xs border border-gray-100 bg-cover bg-right sm:bg-center"
-             style="background-image: url('{{ asset('images/assets/Pipeline Construction in Green Mountains 1.png') }}'); background-repeat: no-repeat; background-size: cover;">
+        {{-- Contained Rounded Card with 3-Slide Auto-Rotating Background (3s interval, no duplicates) --}}
+        <div class="relative w-full rounded-3xl md:rounded-[36px] overflow-hidden shadow-xs border border-gray-100 bg-white"
+             x-data="{
+                 currentBg: 0,
+                 totalBgs: 3,
+                 timer: null,
+                 init() {
+                     this.timer = setInterval(() => {
+                         this.currentBg = (this.currentBg + 1) % this.totalBgs;
+                     }, 3000);
+                 }
+             }">
             
+            {{-- Background Slide 1: Pipeline Construction Workers --}}
+            <div x-show="currentBg === 0"
+                 x-transition:enter="transition-opacity duration-700 ease-in-out"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition-opacity duration-700 ease-in-out absolute inset-0"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="absolute inset-0 bg-cover bg-right sm:bg-center"
+                 style="background-image: url('{{ asset('images/assets/Pipeline Construction in Green Mountains 1.png') }}'); background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            {{-- Background Slide 2: CNG Station --}}
+            <div x-show="currentBg === 1"
+                 x-cloak
+                 x-transition:enter="transition-opacity duration-700 ease-in-out"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition-opacity duration-700 ease-in-out absolute inset-0"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="absolute inset-0 bg-cover bg-right sm:bg-center"
+                 style="background-image: url('{{ asset('images/assets/Our Key_2.png') }}'); background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            {{-- Background Slide 3: Gas Distribution Infrastructure --}}
+            <div x-show="currentBg === 2"
+                 x-cloak
+                 x-transition:enter="transition-opacity duration-700 ease-in-out"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition-opacity duration-700 ease-in-out absolute inset-0"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="absolute inset-0 bg-cover bg-right sm:bg-center"
+                 style="background-image: url('{{ asset('images/assets/Our Key_3.png') }}'); background-repeat: no-repeat; background-size: cover;">
+            </div>
+
             {{-- Left Content Overlay --}}
             <div class="relative z-10 p-6 sm:p-10 md:p-14 lg:p-16 max-w-xl">
                 
