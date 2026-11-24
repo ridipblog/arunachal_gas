@@ -11,7 +11,7 @@
 
         {{-- Horizontal Alternating Timeline (Desktop & Tablet) --}}
         <div class="hidden md:block relative py-6 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-            <div class="relative w-full h-[320px]">
+            <div class="relative w-full h-[330px]">
                 
                 {{-- Continuous Sky-Blue Timeline Bar --}}
                 <div class="absolute top-[155px] left-[6%] right-[6%] h-[3.5px] bg-[#48CAE4] rounded-full -translate-y-1/2 z-0"></div>
@@ -22,7 +22,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 1 (Top) --}}
-                    <div class="absolute top-[20px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[16px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
                                 {{-- Document Checklist Icon --}}
@@ -32,7 +32,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Dec 2023</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 BPCL Board approves bid strategy for CGD Round 12 &amp; 12A
                             </p>
                         </div>
@@ -47,7 +47,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 2 (Bottom) --}}
-                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 pb-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         {{-- Tooltip Pointer pointing directly to Dot 2 --}}
                         <div class="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-l border-t border-slate-200 rotate-45 transform"></div>
                         <div>
@@ -59,7 +59,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Apr 2024</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 PNGRB grants CGD authorisation for GA-12.01 to BPCL–OIL Consortium
                             </p>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 3 (Top) --}}
-                    <div class="absolute top-[20px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[16px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
                                 {{-- Handshake Icon --}}
@@ -85,7 +85,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Oct–Nov 2024</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 BPCL &amp; OIL Boards approve JVA; DIPAM/MoPNG guidelines followed
                             </p>
                         </div>
@@ -99,7 +99,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 4 (Bottom) --}}
-                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 pb-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div class="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-l border-t border-slate-200 rotate-45 transform"></div>
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
@@ -110,7 +110,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Jun 2025</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 DIPAM concurrence &amp; MoPNG approval received for JV formation
                             </p>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 5 (Top) --}}
-                    <div class="absolute top-[20px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[16px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
                                 {{-- Users Group Icon --}}
@@ -133,7 +133,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">2025–26</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 AGPL incorporated; Board, CEO, CFO and core team operationalised
                             </p>
                         </div>
@@ -147,7 +147,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 6 (Bottom) --}}
-                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 pb-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div class="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-l border-t border-slate-200 rotate-45 transform"></div>
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
@@ -158,7 +158,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Jun 2026</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 Stakeholder outreach launched — DC-ICR, Director (Earth Sciences), Hon'ble Home Minister, Arunachal Pradesh
                             </p>
                         </div>
@@ -171,7 +171,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs z-10"></div>
                     
                     {{-- Card 7 (Top) --}}
-                    <div class="absolute top-[20px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[16px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
                                 {{-- Map Pin Icon --}}
@@ -182,7 +182,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Aug 2026</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 Namsai district engagement — Hon'ble MLA &amp; DC Namsai; Namsai proposed as role-model district
                             </p>
                         </div>
@@ -196,7 +196,7 @@
                     <div class="absolute top-[155px] left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#F59E0B] border-2 border-white ring-2 ring-amber-300 shadow-xs z-10"></div>
                     
                     {{-- Card 8 (Bottom) --}}
-                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[190px] xl:w-[210px] h-[118px] bg-white rounded-2xl p-3.5 sm:p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
+                    <div class="absolute top-[172px] left-0 -translate-x-1/2 w-[205px] xl:w-[225px] min-h-[124px] h-auto bg-white rounded-2xl p-3 sm:p-3.5 pb-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200/90 hover:shadow-md transition-shadow z-20 flex flex-col justify-between">
                         <div class="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-l border-t border-slate-200 rotate-45 transform"></div>
                         <div>
                             <div class="flex items-center space-x-2 pb-1.5 border-b border-gray-100">
@@ -208,7 +208,7 @@
                                 <span class="text-gray-300 font-light text-xs">|</span>
                                 <span class="text-sm font-bold text-[#0A1E3B]">Aug 2026</span>
                             </div>
-                            <p class="text-xs text-slate-600 leading-snug mt-1.5">
+                            <p class="text-[11.5px] sm:text-xs text-slate-600 leading-[1.38] mt-1.5">
                                 Management Review — governance, procurement and financing workstreams active
                             </p>
                         </div>
