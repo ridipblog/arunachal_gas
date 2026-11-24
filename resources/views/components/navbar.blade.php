@@ -2,8 +2,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center h-10">
             
-            {{-- Desktop Navigation Links (Matching Figma 1:1) --}}
-            <div class="hidden md:flex items-center space-x-6 text-[13px] font-medium text-white">
+            {{-- Desktop Navigation Links (Visible on >= lg) --}}
+            <div class="hidden lg:flex items-center space-x-6 text-[13px] font-medium text-white">
                 {{-- Home --}}
                 <a href="/" class="hover:text-emerald-100 transition-colors">
                     Home
@@ -148,8 +148,8 @@
                 </a>
             </div>
 
-            {{-- Mobile Menu Button --}}
-            <div class="flex md:hidden items-center justify-between w-full">
+            {{-- Mobile & Tablet Menu Button (Visible on < lg) --}}
+            <div class="flex lg:hidden items-center justify-between w-full">
                 <span class="text-xs font-semibold text-white">Menu</span>
                 <button type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-1.5 rounded-md text-white hover:bg-emerald-700 focus:outline-none">
                     <span class="sr-only">Open main menu</span>
@@ -162,8 +162,8 @@
         </div>
     </div>
 
-    {{-- Mobile Menu Dropdown --}}
-    <div class="md:hidden bg-[#247031] border-t border-emerald-600" x-show="mobileMenuOpen" x-transition>
+    {{-- Mobile & Tablet Menu Dropdown --}}
+    <div class="lg:hidden bg-[#247031] border-t border-emerald-600" x-show="mobileMenuOpen" x-transition>
         <div class="px-3 pt-2 pb-4 space-y-1 text-xs text-white">
             <a href="/" class="block px-3 py-2 rounded-md font-medium hover:bg-emerald-700">Home</a>
             <a href="#about" class="block px-3 py-2 rounded-md font-medium hover:bg-emerald-700">About Us</a>

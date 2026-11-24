@@ -9,8 +9,8 @@
             </h2>
         </div>
 
-        {{-- Horizontal Alternating Timeline (Desktop & Tablet) --}}
-        <div class="hidden md:block relative py-6 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        {{-- Horizontal Alternating Timeline (Desktop Wide Only: >= xl) --}}
+        <div class="hidden xl:block relative py-6 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
             <div class="relative w-full h-[330px]">
                 
                 {{-- Continuous Sky-Blue Timeline Bar --}}
@@ -218,8 +218,8 @@
             </div>
         </div>
 
-        {{-- Mobile Responsive Timeline (Visible on < md) --}}
-        <div class="md:hidden relative border-l-2 border-[#48CAE4] ml-4 pl-6 space-y-6">
+        {{-- Responsive Vertical Timeline (Visible on Mobile, Tablet & Screens < xl matching 2nd screenshot) --}}
+        <div class="xl:hidden relative border-l-2 border-[#48CAE4] ml-6 sm:ml-10 md:ml-14 pl-6 space-y-6 max-w-2xl sm:max-w-3xl">
             
             <div class="relative">
                 <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#16A34A] border-2 border-white shadow-xs"></div>
