@@ -1,6 +1,6 @@
 <nav class="bg-[#2E8B3D] sticky top-0 z-30 shadow-xs" x-data="{ mobileMenuOpen: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center h-10">
+        <div class="flex items-center h-12">
             
             {{-- Desktop Navigation Links (Visible on >= lg) --}}
             <div class="hidden lg:flex items-center space-x-6 text-[13px] font-medium text-white">
