@@ -8,13 +8,6 @@
                     <img src="{{ asset('images/assets/gas_station.png') }}" 
                          alt="Arunachal Gas CNG Dispensing Station" 
                          class="w-full h-full object-cover block">
-                    
-                    {{-- Floating "Cleaner Energy for Arunachal" Badge on Bottom Right --}}
-                    <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-10">
-                        <img src="{{ asset('images/assets/Cleaner Energy for Arunachal Badge 1.png') }}" 
-                             alt="Cleaner Energy for Arunachal" 
-                             class="h-12 sm:h-14 w-auto rounded-xl shadow-md">
-                    </div>
                 </div>
             </div>
 
