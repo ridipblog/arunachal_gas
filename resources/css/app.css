@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --color-agpl-green: #237836;
+    --color-agpl-green-dark: #195827;
+    --color-agpl-green-light: #2E7D32;
+    --color-agpl-green-pale: #F3F9F4;
+    --color-agpl-blue: #0B5CAB;
+    --color-agpl-blue-dark: #004280;
+    --color-agpl-blue-light: #1573D6;
+    --color-agpl-amber: #F59E0B;
+    --color-agpl-amber-dark: #D97706;
+    --color-agpl-charcoal: #1F2937;
+    --color-agpl-gray: #4B5563;
+    --color-agpl-gray-light: #9CA3AF;
+    --color-agpl-border: #E5E7EB;
+    --color-agpl-bg-tint: #F8FAF8;
+    
+    --font-sans: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Utilities */
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Hide scrollbar for tabs / ticker */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Pipeline Stroke Animation */
+@keyframes drawPipeline {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-pipeline {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawPipeline 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Glassmorphism subtle effect */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+}
