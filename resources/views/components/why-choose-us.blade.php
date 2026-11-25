@@ -14,10 +14,10 @@
             
             {{-- Card 1: Safety first --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
                     <img src="{{ asset('images/assets/Safety first.png') }}" 
                          alt="Safety first" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -31,10 +31,10 @@
 
             {{-- Card 2: Integrity and transparency --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <img src="{{ asset('images/assets/vission.png') }}" 
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <img src="{{ asset('images/assets/Integrity and transparency.png') }}" 
                          alt="Integrity and transparency" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -48,10 +48,10 @@
 
             {{-- Card 3: Customer focus --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
                     <img src="{{ asset('images/assets/Town Hall Meeting.png') }}" 
                          alt="Customer focus" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -65,10 +65,10 @@
 
             {{-- Card 4: Operational excellence --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <img src="{{ asset('images/assets/Quarterly Safety Audit.png') }}" 
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <img src="{{ asset('images/assets/Operational excellence.png') }}" 
                          alt="Operational excellence" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -82,10 +82,10 @@
 
             {{-- Card 5: Sustainability --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
                     <img src="{{ asset('images/assets/Sustainability.png') }}" 
                          alt="Sustainability" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -99,10 +99,10 @@
 
             {{-- Card 6: Collaboration --}}
             <div class="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-200 flex items-start space-x-4">
-                <div class="w-11 h-11 rounded-xl bg-green-50/80 border border-green-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <img src="{{ asset('images/assets/PNG connections targeted.png') }}" 
+                <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <img src="{{ asset('images/assets/Collaboration.png') }}" 
                          alt="Collaboration" 
-                         class="w-6 h-6 object-contain">
+                         class="w-7 h-7 object-contain">
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-gray-900 leading-snug">
@@ -118,3 +118,5 @@
 
     </div>
 </section>
+
+
