@@ -1,7 +1,7 @@
-<section id="development-targets" class="py-12 sm:py-16 bg-white relative z-20">
+<section id="development-targets" class="py-12 sm:py-16 bg-white relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Contained Rounded Card with 3-Slide Auto-Rotating Background (3s interval, no duplicates) --}}
-        <div class="relative w-full rounded-3xl md:rounded-[36px] overflow-hidden shadow-xs border border-gray-100 bg-white"
+        <div id="targets-card" class="relative w-full rounded-3xl md:rounded-[36px] overflow-hidden shadow-xs border border-gray-100 bg-white will-change-transform"
              x-data="{
                  currentBg: 0,
                  totalBgs: 3,
@@ -52,7 +52,7 @@
             </div>
 
             {{-- Left Content Overlay --}}
-            <div class="relative z-10 p-6 sm:p-10 md:p-14 lg:p-16 max-w-xl">
+            <div class="relative z-10 p-6 sm:p-10 md:p-14 lg:p-16 max-w-xl targets-content-parallax will-change-transform">
                 
                 {{-- Heading --}}
                 <div class="mb-8">

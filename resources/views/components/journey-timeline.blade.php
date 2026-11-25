@@ -1,4 +1,4 @@
-<section id="services-interactive" class="py-16 sm:py-20 bg-[#f4f9f5] relative z-20">
+<section id="services-interactive" class="py-16 sm:py-20 bg-[#f4f9f5] relative z-30 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.06)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {{-- Section Title --}}

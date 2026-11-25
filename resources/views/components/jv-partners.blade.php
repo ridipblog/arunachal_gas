@@ -1,18 +1,18 @@
-<section id="about" class="py-16 sm:py-20 bg-white relative z-20">
+<section id="about" class="py-12 sm:py-16 bg-white relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {{-- Left Column: Gas Station Visual Card with Floating Badge --}}
-            <div class="lg:col-span-5 relative">
+            <div class="lg:col-span-5 relative jv-anim-left will-change-transform">
                 <div class="relative w-full rounded-3xl md:rounded-[32px] overflow-hidden shadow-xs border border-gray-100 aspect-[4/5] max-w-md mx-auto lg:max-w-none">
                     <img src="{{ asset('images/assets/gas_station.png') }}" 
                          alt="Arunachal Gas CNG Dispensing Station" 
-                         class="w-full h-full object-cover block">
+                         class="w-full h-full object-cover block jv-station-img will-change-transform">
                 </div>
             </div>
 
             {{-- Right Column: Typography & Content (Exact Figma Copy) --}}
-            <div class="lg:col-span-7 space-y-5">
+            <div class="lg:col-span-7 space-y-5 jv-anim-right will-change-transform">
                 
                 {{-- Headline --}}
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">

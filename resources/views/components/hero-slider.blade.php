@@ -1,70 +1,75 @@
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
-    {{-- Contained Rounded Hero Card Matching Figma 1:1 with 3 Slides Carousel --}}
-    <div class="relative w-full rounded-2xl md:rounded-[28px] overflow-hidden shadow-xs border border-gray-100 bg-white" 
+{{-- Hero section container — single image at a time with smooth 3-stage scroll-shrink --}}
+<section id="hero-section-wrap" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-2 relative z-20">
+    {{--
+        Hero Shrink Container:
+        Maintains the exact natural 2.31:1 aspect ratio (2141/928) across ALL screen sizes (desktop, tablet, mobile),
+        preventing any image or headline text cropping.
+        When scrolling, GSAP ScrollTrigger smoothly shrinks this height down cleanly.
+        Only ONE image is visible at a time.
+    --}}
+    <div id="hero-shrink-container" 
+         class="relative w-full max-w-full aspect-[2141/928] will-change-[height]"
          x-data="{
              currentSlide: 0,
-             totalSlides: 3,
+             slides: [
+                 {
+                     id: 0,
+                     img: '{{ asset('images/assets/Group 1000002719.png') }}',
+                     alt: 'Connecting Arunachal Pradesh to a Cleaner Energy Future'
+                 },
+                 {
+                     id: 1,
+                     img: '{{ asset('images/assets/hero_2.png') }}',
+                     alt: 'Empowering Transportation with Cleaner Energy for a Better Tomorrow'
+                 },
+                 {
+                     id: 2,
+                     img: '{{ asset('images/assets/hero_3.png') }}',
+                     alt: 'Bringing Safe and Reliable Natural Gas to Your Home'
+                 }
+             ],
              timer: null,
              init() {
                  this.startAutoplay();
              },
              next() {
-                 this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                 this.currentSlide = (this.currentSlide + 1) % this.slides.length;
                  this.resetAutoplay();
              },
              prev() {
-                 this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                 this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
                  this.resetAutoplay();
              },
              startAutoplay() {
                  this.timer = setInterval(() => {
-                     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-                 }, 3000);
+                     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+                 }, 4000);
              },
              resetAutoplay() {
                  clearInterval(this.timer);
                  this.startAutoplay();
              }
          }">
-        
-        {{-- High-Resolution Hero Visuals (Group 1000002719.png, hero_2.png, hero_3.png) --}}
-        <div class="relative w-full overflow-hidden">
-            {{-- Slide 1 --}}
-            <div x-show="currentSlide === 0" 
-                 x-transition:enter="transition-opacity duration-300"
-                 x-transition:enter-start="opacity-0"
-                 x-transition:enter-end="opacity-100"
-                 class="w-full">
-                <img src="{{ asset('images/assets/Group 1000002719.png') }}" 
-                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 1" 
-                     class="w-full h-auto object-cover block select-none">
-            </div>
 
-            {{-- Slide 2 --}}
-            <div x-show="currentSlide === 1" 
-                 x-cloak
-                 x-transition:enter="transition-opacity duration-300"
-                 x-transition:enter-start="opacity-0"
-                 x-transition:enter-end="opacity-100"
-                 class="w-full">
-                <img src="{{ asset('images/assets/hero_2.png') }}" 
-                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 2" 
-                     class="w-full h-auto object-cover block select-none">
-            </div>
+        {{-- Single Active Hero Card (Only One Image Visible at a Time) --}}
+        <div id="hero-card" class="relative w-full h-full rounded-2xl md:rounded-[28px] overflow-hidden shadow-xs border border-gray-100 bg-white">
+            {{-- Active Slide Image with Smooth Crossfade --}}
+            <template x-for="(slide, index) in slides" :key="slide.id">
+                <div x-show="currentSlide === index"
+                     x-transition:enter="transition-opacity duration-500 ease-out"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     x-transition:leave="transition-opacity duration-300 ease-in absolute inset-0"
+                     x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0"
+                     class="w-full h-full">
+                    <img :src="slide.img" 
+                         :alt="slide.alt"
+                         class="w-full h-full object-cover object-top block select-none">
+                </div>
+            </template>
 
-            {{-- Slide 3 --}}
-            <div x-show="currentSlide === 2" 
-                 x-cloak
-                 x-transition:enter="transition-opacity duration-300"
-                 x-transition:enter-start="opacity-0"
-                 x-transition:enter-end="opacity-100"
-                 class="w-full">
-                <img src="{{ asset('images/assets/hero_3.png') }}" 
-                     alt="Connecting Arunachal Pradesh to a Cleaner Energy Future - Slide 3" 
-                     class="w-full h-auto object-cover block select-none">
-            </div>
-
-            {{-- White Cutout Pocket with Inverted Fillet Radii matching Figma 2nd screenshot 1:1 --}}
+            {{-- White Cutout Pocket with Inverted Fillets & Navigation Buttons --}}
             <div class="absolute bottom-0 right-0 bg-white p-1.5 sm:p-2 md:p-2.5 rounded-tl-2xl sm:rounded-tl-3xl z-20 flex items-center space-x-1.5 sm:space-x-2">
                 {{-- Top Inverted Concave Fillet --}}
                 <svg class="absolute -top-4 sm:-top-5 right-0 w-4 h-4 sm:w-5 sm:h-5 text-white fill-current pointer-events-none" viewBox="0 0 20 20">

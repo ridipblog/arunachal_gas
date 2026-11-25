@@ -1,16 +1,24 @@
-<section id="journey-milestones" class="py-16 sm:py-24 relative z-20 overflow-hidden bg-white bg-no-repeat bg-bottom border-b border-gray-100"
-         style="background-image: url('{{ asset('images/assets/Eco Energy Pipeline Landscape 1.png') }}'); background-position: center bottom; background-size: 100% auto;">
+<section id="journey-milestones" class="py-16 sm:py-24 relative z-20 overflow-hidden bg-white border-b border-gray-100">
+    {{-- Parallax Background Image Layer (Pipeline & Scenic Hills) --}}
+    <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        <img src="{{ asset('images/assets/Eco Energy Pipeline Landscape 1.png') }}" 
+             alt="Eco Energy Pipeline Landscape" 
+             class="milestones-bg-parallax w-full h-auto min-h-[320px] object-cover object-bottom absolute bottom-0 left-0 right-0 will-change-transform">
+    </div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {{-- Section Title --}}
-        <div class="text-center mb-14 sm:mb-16">
+        {{-- Section Title (Enters first smoothly) --}}
+        <div class="text-center mb-14 sm:mb-16 milestones-title-parallax will-change-transform">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                 Journey So Far <span class="font-normal text-gray-400">–</span> <span class="text-[#2E8B3D]">Key Milestones</span>
             </h2>
         </div>
 
-        {{-- Horizontal Alternating Timeline (Desktop Wide Only: >= xl) --}}
-        <div class="hidden xl:block relative py-6 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        {{-- Timeline Content Track (Rises smoothly from bottom to top with parallax scrub) --}}
+        <div class="milestones-timeline-parallax will-change-transform">
+            {{-- Horizontal Alternating Timeline (Desktop Wide Only: >= xl) --}}
+            <div class="hidden xl:block relative py-6 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
             <div class="relative w-full h-[330px]">
                 
                 {{-- Continuous Sky-Blue Timeline Bar --}}
@@ -338,6 +346,9 @@
                 </div>
             </div>
 
+        </div>
+
+        {{-- End Timeline Content Track --}}
         </div>
 
     </div>
