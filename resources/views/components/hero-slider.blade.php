@@ -65,7 +65,7 @@
                      class="w-full h-full">
                     <img :src="slide.img" 
                          :alt="slide.alt"
-                         class="w-full h-full object-cover object-top block select-none">
+                         class="w-full h-full object-cover object-left-top block select-none">
                 </div>
             </template>
 

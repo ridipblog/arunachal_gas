@@ -86,9 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─────────────────────────────────────────────────────────────
     // ANIMATION 1: Hero Slider — Step-wise scroll shrink from bottom
-    // Photo 1: Full-height hero with peeking adjacent slides
+    // Photo 1: Full-height hero with natural aspect ratio (2141:928)
     // Photo 2: As you scroll, height shrinks smoothly from bottom up
     // Photo 3: Shrinks into sleek ribbon (~140px) as #about arrives
+    // Fully responsive across all devices (desktop, 1024px, tablet, mobile)
     // ─────────────────────────────────────────────────────────────
     const heroShrink = document.getElementById('hero-shrink-container');
     const heroWrap = document.getElementById('hero-section-wrap');
@@ -99,12 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return 80;
         };
 
-        // Capture initial natural rendered height
-        const initialH = heroShrink.offsetHeight || 520;
-        const getShrinkDelta = () => Math.max(60, (heroShrink.offsetHeight || initialH) - getMinHeight());
+        // Dynamically compute natural rendered height based on current width (2141:928 ratio)
+        // This ensures the image is never squeezed or vertically stretched to crop horizontal text
+        const getNaturalHeight = () => {
+            const currentW = heroShrink.offsetWidth || heroWrap.offsetWidth || 1200;
+            return Math.round(currentW * (928 / 2141));
+        };
+
+        const getShrinkDelta = () => Math.max(60, getNaturalHeight() - getMinHeight());
 
         gsap.fromTo(heroShrink,
-            { height: initialH },
+            { height: () => getNaturalHeight() },
             {
                 height: getMinHeight,
                 ease: 'none',

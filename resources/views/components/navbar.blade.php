@@ -151,11 +151,17 @@
             {{-- Mobile & Tablet Menu Button (Visible on < lg) --}}
             <div class="flex lg:hidden items-center justify-between w-full">
                 <span class="text-xs font-semibold text-white">Menu</span>
-                <button type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-1.5 rounded-md text-white hover:bg-emerald-700 focus:outline-none">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path :class="mobileMenuOpen ? 'hidden' : 'block'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="mobileMenuOpen ? 'block' : 'hidden'" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                <button type="button" 
+                        @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="inline-flex items-center justify-center p-2 rounded-lg text-white hover:bg-emerald-700/80 active:bg-emerald-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer"
+                        :aria-expanded="mobileMenuOpen"
+                        aria-label="Toggle navigation menu">
+                    <span class="sr-only">Toggle navigation menu</span>
+                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        {{-- Hamburger Icon (Visible when closed) --}}
+                        <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                        {{-- Close X Icon (Visible when open) --}}
+                        <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>

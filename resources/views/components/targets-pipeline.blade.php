@@ -34,7 +34,7 @@
                                      alt="Oil India Limited (OIL)" 
                                      class="h-12 w-auto object-contain">
                             </div>
-                            <p class="text-xs text-gray-600 leading-relaxed">
+                            <p class="text-xs font-medium text-gray-700 leading-relaxed">
                                 An integrated energy company with extensive experience in exploring for, developing and producing crude oil and natural gas, giving AGPL a strong technical foundation.
                             </p>
                         </div>
@@ -49,7 +49,7 @@
                                      alt="Bharat Petroleum Corporation Limited (BPCL)" 
                                      class="h-12 w-auto object-contain">
                             </div>
-                            <p class="text-xs text-gray-600 leading-relaxed">
+                            <p class="text-xs font-medium text-gray-700 leading-relaxed">
                                 A major Indian energy company in refining, marketing and distribution of petroleum products, bringing experience in fuel marketing, distribution networks and customer service.
                             </p>
                         </div>
@@ -80,7 +80,7 @@
                             <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Scheduled for 24th Oct. All personnel are required to participate.</p>
                             <span class="text-[10px] text-gray-400 block mt-1">23 Oct 2026 - 10:00 AM</span>
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0">
+                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
                             NEW
                         </span>
                     </div>
@@ -95,7 +95,7 @@
                             <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Updated policy documents are now available on the internal portal.</p>
                             <span class="text-[10px] text-gray-400 block mt-1">22 Oct 2026 - 02:30 PM</span>
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0">
+                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
                             NEW
                         </span>
                     </div>
@@ -110,7 +110,7 @@
                             <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Join us for the Q3 performance review and future roadmap discussion.</p>
                             <span class="text-[10px] text-gray-400 block mt-1">21 Oct 2026 - 11:00 AM</span>
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0">
+                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
                             NEW
                         </span>
                     </div>
@@ -125,7 +125,7 @@
                             <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Scheduled downtime for system upgrades. Expect service interruptions.</p>
                             <span class="text-[10px] text-gray-400 block mt-1">25 Oct 2026 - 08:00 PM</span>
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0">
+                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
                             UPCOMING
                         </span>
                     </div>
