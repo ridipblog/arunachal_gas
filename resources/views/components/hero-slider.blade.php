@@ -7,9 +7,9 @@
         When scrolling, GSAP ScrollTrigger smoothly shrinks this height down cleanly.
         Only ONE image is visible at a time.
     --}}
-    <div id="hero-shrink-container" 
-         class="relative w-full max-w-full aspect-[2141/928] will-change-[height]"
-         x-data="{
+    <div id="hero-shrink-container"
+        class="relative w-full max-w-full aspect-[2141/928] will-change-[height]"
+        x-data="{
              currentSlide: 0,
              slides: [
                  {
@@ -56,16 +56,16 @@
             {{-- Active Slide Image with Smooth Crossfade --}}
             <template x-for="(slide, index) in slides" :key="slide.id">
                 <div x-show="currentSlide === index"
-                     x-transition:enter="transition-opacity duration-500 ease-out"
-                     x-transition:enter-start="opacity-0"
-                     x-transition:enter-end="opacity-100"
-                     x-transition:leave="transition-opacity duration-300 ease-in absolute inset-0"
-                     x-transition:leave-start="opacity-100"
-                     x-transition:leave-end="opacity-0"
-                     class="w-full h-full">
-                    <img :src="slide.img" 
-                         :alt="slide.alt"
-                         class="w-full h-full object-cover object-left-top block select-none">
+                    x-transition:enter="transition-opacity duration-500 ease-out"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition-opacity duration-300 ease-in absolute inset-0"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="w-full h-full">
+                    <img :src="slide.img"
+                        :alt="slide.alt"
+                        class="w-full h-full object-cover object-left-top block select-none">
                 </div>
             </template>
 
@@ -73,24 +73,24 @@
             <div class="absolute bottom-0 right-0 bg-white p-1.5 sm:p-2 md:p-2.5 rounded-tl-2xl sm:rounded-tl-3xl z-20 flex items-center space-x-1.5 sm:space-x-2">
                 {{-- Top Inverted Concave Fillet --}}
                 <svg class="absolute -top-4 sm:-top-5 right-0 w-4 h-4 sm:w-5 sm:h-5 text-white fill-current pointer-events-none" viewBox="0 0 20 20">
-                    <path d="M20 0 C20 11.0457 11.0457 20 0 20 H20 V0 Z"/>
+                    <path d="M20 0 C20 11.0457 11.0457 20 0 20 H20 V0 Z" />
                 </svg>
 
                 {{-- Left Inverted Concave Fillet --}}
                 <svg class="absolute bottom-0 -left-4 sm:-left-5 w-4 h-4 sm:w-5 sm:h-5 text-white fill-current pointer-events-none" viewBox="0 0 20 20">
-                    <path d="M0 20 C11.0457 20 20 11.0457 20 0 V20 H0 Z"/>
+                    <path d="M0 20 C11.0457 20 20 11.0457 20 0 V20 H0 Z" />
                 </svg>
 
-                <button type="button" @click="prev()" 
-                        class="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#2E8B3D] hover:bg-[#237836] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xs hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer" 
-                        title="Previous Slide" 
-                        aria-label="Previous">
+                <button type="button" @click="prev()"
+                    class="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#2E8B3D] hover:bg-[#237836] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xs hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer"
+                    title="Previous Slide"
+                    aria-label="Previous">
                     &laquo;
                 </button>
-                <button type="button" @click="next()" 
-                        class="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#2E8B3D] hover:bg-[#237836] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xs hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer" 
-                        title="Next Slide" 
-                        aria-label="Next">
+                <button type="button" @click="next()"
+                    class="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#2E8B3D] hover:bg-[#237836] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xs hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer"
+                    title="Next Slide"
+                    aria-label="Next">
                     &raquo;
                 </button>
             </div>
