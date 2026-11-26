@@ -26,7 +26,7 @@
             
             {{-- Column 1: Tall Energy Infrastructure Card (Spans 4 cols on md+) --}}
             <div class="md:col-span-4 flex flex-col">
-                <div class="journey-card relative w-full h-full min-h-[380px] md:min-h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
+                <div class="journey-card opacity-0 relative w-full h-full min-h-[380px] md:min-h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_1.png') }}" 
                          alt="Energy Infrastructure" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -45,7 +45,7 @@
             <div class="md:col-span-4 flex flex-col gap-5">
                 
                 {{-- Card 2: People Behind Progress --}}
-                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
+                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_2.png') }}" 
                          alt="People Behind Progress" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -60,7 +60,7 @@
                 </div>
 
                 {{-- Card 3: Towards a Greener Future --}}
-                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
+                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_3.png') }}" 
                          alt="Towards a Greener Future" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -80,7 +80,7 @@
             <div class="md:col-span-4 flex flex-col gap-5">
                 
                 {{-- Card 4: Events & Engagements --}}
-                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
+                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_4.png') }}" 
                          alt="Events & Engagements" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -95,7 +95,7 @@
                 </div>
 
                 {{-- Card 5: Collaboration & Planning --}}
-                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
+                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_5.png') }}" 
                          alt="Collaboration & Planning" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">

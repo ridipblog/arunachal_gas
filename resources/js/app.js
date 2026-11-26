@@ -723,23 +723,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (journeySec) {
         const isMobile = window.innerWidth < 768;
+        const initialCardY = isMobile ? 140 : 240;
+
+        // Ensure cards are explicitly hidden and positioned down upfront to prevent double-show
+        if (journeyCards.length > 0) {
+            gsap.set(journeyCards, { opacity: 0, y: initialCardY });
+        }
+
         const journeyTl = gsap.timeline({
             scrollTrigger: {
                 trigger: journeySec,
-                start: isMobile ? 'top 98%' : 'top 100%',
-                end: isMobile ? 'top 18%' : 'top 22%',
-                scrub: 2.2, // Slow, gentle scrub damping
+                start: isMobile ? 'top 100%' : 'top 105%',
+                end: isMobile ? 'top 10%' : 'top 12%',
+                scrub: 2.8, // Ultra-slow, luxurious scrub damping
                 invalidateOnRefresh: true
             }
         });
 
-        // Phase 1: Whole section & header rise from deep at the bottom to top with slow fade
+        // Phase 1: Whole section & header rise slowly from deep at the bottom with gentle fade
         journeyTl.fromTo(journeySec,
             { opacity: 0, y: isMobile ? 160 : 280 },
             {
                 opacity: 1,
                 y: 0,
-                duration: 1.0,
+                duration: 2.2, // Extended duration to make bottom-to-top rise noticeably slower
                 ease: 'sine.inOut'
             }
         );
@@ -750,25 +757,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 0.8,
+                    duration: 1.8,
                     ease: 'sine.inOut'
                 },
                 0 // synchronized with section entrance
             );
         }
 
-        // Phase 2: After the section enters, images emerge from deeper at the bottom with smooth parallax
+        // Phase 2: After section enters, images emerge faster and crisply from bottom
         if (journeyCards.length > 0) {
-            journeyTl.fromTo(journeyCards,
-                { opacity: 0, y: isMobile ? 160 : 260 },
+            journeyTl.to(journeyCards,
                 {
                     opacity: 1,
                     y: 0,
-                    stagger: 0.1,
-                    duration: 1.2,
-                    ease: 'sine.inOut'
+                    stagger: 0.07,
+                    duration: 0.85, // Faster, snappier image entrance
+                    ease: 'power2.out'
                 },
-                ">" // runs directly after phase 1
+                ">-0.2" // begins as section settles into place
             );
         }
     }
