@@ -632,6 +632,146 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
     }
+
+    // ─────────────────────────────────────────────────────────────
+    // ANIMATION 9: "Clean, Reliable Natural Gas" Section (#solutions)
+    // • Trigger: Scrolling from #why-choose-agpl into #solutions
+    // • Ultra-Slow, Smooth Fade: Opacity builds extra gradually across
+    //   an extended scroll range (top 100% -> top 36%) with 2.4s scrub damping.
+    // • Deep Bottom-to-Top Travel: Synchronized content (text + 4 cards/images)
+    //   emerges from much deeper at the bottom (y: 240px -> 0px) for prominent parallax.
+    // • Background Landscape: Slides right-to-left (x: 200 -> 0), settling softly.
+    // • All elements lock gracefully into final resting position at ~45%-50% scroll.
+    // ─────────────────────────────────────────────────────────────
+    const solutionsSec = document.getElementById('solutions');
+    const solutionsBg = document.querySelector('.solutions-bg-landscape');
+    const solutionsContent = document.querySelector('.solutions-content-wrapper') || document.querySelectorAll('.solutions-content-left, .solutions-cards');
+
+    if (solutionsSec) {
+        const isMobile = window.innerWidth < 768;
+        const startTrigger = isMobile ? 'top 98%' : 'top 100%';
+        const endTrigger = isMobile ? 'top 32%' : 'top 36%';
+        const scrubSmoothness = 2.4; // Extra-slow, ultra-soft scrub damping
+
+        // 1. Whole section fades in extra slowly and gradually from 0% to 100% opacity
+        gsap.fromTo(solutionsSec,
+            { opacity: 0 },
+            {
+                opacity: 1,
+                ease: 'sine.inOut',
+                scrollTrigger: {
+                    trigger: solutionsSec,
+                    start: startTrigger,
+                    end: endTrigger,
+                    scrub: scrubSmoothness,
+                    invalidateOnRefresh: true
+                }
+            }
+        );
+
+        // 2. Background landscape slides right to left with gentle, slow fade
+        if (solutionsBg) {
+            gsap.fromTo(solutionsBg,
+                { x: isMobile ? 80 : 200, opacity: 0.1 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    ease: 'sine.inOut',
+                    scrollTrigger: {
+                        trigger: solutionsSec,
+                        start: startTrigger,
+                        end: endTrigger,
+                        scrub: scrubSmoothness,
+                        invalidateOnRefresh: true
+                    }
+                }
+            );
+        }
+
+        // 3. Text and Images rise together from DEEPER down at the bottom (y: 240 -> 0) with slow fade
+        if (solutionsContent) {
+            gsap.fromTo(solutionsContent,
+                { y: isMobile ? 140 : 240, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    ease: 'sine.inOut',
+                    scrollTrigger: {
+                        trigger: solutionsSec,
+                        start: startTrigger,
+                        end: endTrigger,
+                        scrub: scrubSmoothness,
+                        invalidateOnRefresh: true
+                    }
+                }
+            );
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ANIMATION 10: "Capturing Our Journey" 2-Phase Parallax (#capturing-journey)
+    // • Trigger: Scrolling from #solutions into #capturing-journey
+    // • Phase 1: The whole section (container & header) rises smoothly from bottom to top
+    //   with slow, gentle sine.inOut easing and gradual opacity fade.
+    // • Phase 2 (Sequential): After the section enters, the 5 gallery image cards emerge
+    //   from deeper below and glide upward into their grid positions with the same slow,
+    //   gentle parallax scrub.
+    // ─────────────────────────────────────────────────────────────
+    const journeySec = document.getElementById('capturing-journey');
+    const journeyHeader = document.querySelector('.journey-header');
+    const journeyCards = document.querySelectorAll('.journey-card');
+
+    if (journeySec) {
+        const isMobile = window.innerWidth < 768;
+        const journeyTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: journeySec,
+                start: isMobile ? 'top 98%' : 'top 100%',
+                end: isMobile ? 'top 18%' : 'top 22%',
+                scrub: 2.2, // Slow, gentle scrub damping
+                invalidateOnRefresh: true
+            }
+        });
+
+        // Phase 1: Whole section & header rise from deep at the bottom to top with slow fade
+        journeyTl.fromTo(journeySec,
+            { opacity: 0, y: isMobile ? 160 : 280 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.0,
+                ease: 'sine.inOut'
+            }
+        );
+
+        if (journeyHeader) {
+            journeyTl.fromTo(journeyHeader,
+                { opacity: 0, y: isMobile ? 80 : 160 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'sine.inOut'
+                },
+                0 // synchronized with section entrance
+            );
+        }
+
+        // Phase 2: After the section enters, images emerge from deeper at the bottom with smooth parallax
+        if (journeyCards.length > 0) {
+            journeyTl.fromTo(journeyCards,
+                { opacity: 0, y: isMobile ? 160 : 260 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.1,
+                    duration: 1.2,
+                    ease: 'sine.inOut'
+                },
+                ">" // runs directly after phase 1
+            );
+        }
+    }
     // 1. Scroll-triggered reveal animations for sections & cards
     const fadeUpElements = document.querySelectorAll('.gsap-fade-up');
     fadeUpElements.forEach((el) => {

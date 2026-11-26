@@ -1,8 +1,8 @@
-<section id="capturing-journey" class="py-16 sm:py-24 bg-[#f4f9f6] relative z-20 border-b border-gray-100">
+<section id="capturing-journey" class="py-16 sm:py-24 bg-[#f4f9f6] relative z-20 border-b border-gray-100 will-change-transform">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {{-- Section Header with Title on Left and Explore Gallery CTA on Right --}}
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-5">
+        <div class="journey-header flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-5 will-change-transform">
             <div class="max-w-2xl">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                     Capturing Our <span class="text-[#2E8B3D]">Journey</span>
@@ -22,11 +22,11 @@
         </div>
 
         {{-- 3-Column Photographic Gallery Grid (Matching Figma 5-Photo Showcase) --}}
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+        <div class="journey-gallery-grid grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
             
             {{-- Column 1: Tall Energy Infrastructure Card (Spans 4 cols on md+) --}}
             <div class="md:col-span-4 flex flex-col">
-                <div class="relative w-full h-full min-h-[380px] md:min-h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group">
+                <div class="journey-card relative w-full h-full min-h-[380px] md:min-h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_1.png') }}" 
                          alt="Energy Infrastructure" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -45,7 +45,7 @@
             <div class="md:col-span-4 flex flex-col gap-5">
                 
                 {{-- Card 2: People Behind Progress --}}
-                <div class="relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group">
+                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_2.png') }}" 
                          alt="People Behind Progress" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -60,7 +60,7 @@
                 </div>
 
                 {{-- Card 3: Towards a Greener Future --}}
-                <div class="relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group">
+                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_3.png') }}" 
                          alt="Towards a Greener Future" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -80,7 +80,7 @@
             <div class="md:col-span-4 flex flex-col gap-5">
                 
                 {{-- Card 4: Events & Engagements --}}
-                <div class="relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group">
+                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_4.png') }}" 
                          alt="Events & Engagements" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
@@ -95,7 +95,7 @@
                 </div>
 
                 {{-- Card 5: Collaboration & Planning --}}
-                <div class="relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group">
+                <div class="journey-card relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
                     <img src="{{ asset('images/assets/journey_5.png') }}" 
                          alt="Collaboration & Planning" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
