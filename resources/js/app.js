@@ -222,18 +222,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         );
 
-        // 1. Background image subtle atmospheric glide into exact fit matching Photo 2
+        // 1. Background image vertical scroll travel from top mountains/monastery (Image 2) to bottom wave ribbon (Image 3)
         if (newsBg) {
             gsap.fromTo(newsBg,
-                { x: 50 },
+                { y: 0 },
                 {
-                    x: 0,
+                    y: () => -(newsBg.offsetHeight - newsSection.offsetHeight),
                     ease: 'none',
                     scrollTrigger: {
                         trigger: newsSection,
-                        start: 'top bottom',
-                        end: 'top 45%',
-                        scrub: 1.2,
+                        start: 'top 70%',
+                        end: 'bottom 20%',
+                        scrub: 1.0,
                         invalidateOnRefresh: true
                     }
                 }
