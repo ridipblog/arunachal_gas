@@ -1,10 +1,10 @@
-<section id="joint-venture" class="py-16 sm:py-20 relative overflow-hidden bg-white">
-    {{-- Parallax Background Image Layer (Exact Fit across all screens, glides right to left) --}}
+<section id="joint-venture" class="py-16 sm:py-20 relative overflow-hidden bg-white will-change-transform">
+    {{-- Parallax Background Image Layer (Exact Fit across all screens matching Photo 2) --}}
     <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         <img src="{{ asset('images/assets/Misty Mountain Wave Landscape 1.png') }}" 
              alt="Misty Mountain Wave Landscape" 
-             class="news-bg-parallax w-full h-full object-cover block will-change-transform"
-             style="object-position: 85% bottom;">
+             class="news-bg-parallax w-full h-full object-cover block select-none pointer-events-none will-change-transform scale-105"
+             style="object-position: 70% top;">
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

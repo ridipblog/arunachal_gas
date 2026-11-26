@@ -192,12 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─────────────────────────────────────────────────────────────
-    // ANIMATION 3: News, Events & Notices (#joint-venture) Parallax
+    // ANIMATION 3: News, Events & Notices (#joint-venture) Multi-Layer Bottom-to-Top Parallax
     // As user scrolls from #about into #joint-venture:
-    // • Whole section smoothly zooms in (scale: 0.93 -> 1.0) to fit actual size
-    // • Background image glides smoothly from right to left (x: 70 -> 0)
-    // • Right "News, Events and Notices" card floats up with parallax
-    // • Left "A 50:50 Joint Venture" partner cards float in smoothly
+    // • Background landscape drifts smoothly (y: 70 -> -25) with deep atmospheric parallax
+    // • Left "A 50:50 Joint Venture" column rises from bottom (y: 160 -> 0)
+    // • Right "News, Events and Notices" column rises from deeper bottom (y: 230 -> 0)
+    // • The two columns and background travel at different speeds for genuine 3D parallax depth
     // ─────────────────────────────────────────────────────────────
     const newsSection = document.getElementById('joint-venture');
     const newsBg = document.querySelector('.news-bg-parallax');
@@ -205,67 +205,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const jvCards = document.querySelector('.jv-cards-parallax');
 
     if (newsSection) {
-        // 0. Whole section smooth zoom-in from bottom to top to fit actual 100% size
+        // 0. The WHOLE SECTION comes from bottom to top, settling faster into current position
         gsap.fromTo(newsSection,
-            { scale: 0.93, transformOrigin: 'bottom center' },
+            { y: 130, scale: 0.80, transformOrigin: 'center bottom' },
             {
+                y: 0,
                 scale: 1.0,
-                ease: 'none',
+                ease: 'power1.out',
                 scrollTrigger: {
                     trigger: newsSection,
                     start: 'top bottom',
-                    end: 'top 20%',
-                    scrub: 1.2
+                    end: 'top 45%', // Completes earlier so it settles into position faster
+                    scrub: 0.7,     // Quicker, more responsive scrub
+                    invalidateOnRefresh: true
                 }
             }
         );
 
-        // 1. Background image glides smoothly from right to left into exact fit
+        // 1. Background image subtle atmospheric glide into exact fit matching Photo 2
         if (newsBg) {
             gsap.fromTo(newsBg,
-                { x: 70 },
+                { x: 50 },
                 {
                     x: 0,
                     ease: 'none',
                     scrollTrigger: {
                         trigger: newsSection,
                         start: 'top bottom',
-                        end: 'top 25%',
-                        scrub: 1.2
+                        end: 'top 45%',
+                        scrub: 1.2,
+                        invalidateOnRefresh: true
                     }
                 }
             );
         }
 
-        // 2. Right "News, Events and Notices" column parallax float
-        if (newsContent) {
-            gsap.fromTo(newsContent,
-                { y: 50 },
-                {
-                    y: 0,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: newsSection,
-                        start: 'top bottom',
-                        end: 'top 30%',
-                        scrub: 1.0
-                    }
-                }
-            );
-        }
-
-        // 3. Left partner cards parallax float
+        // 2. Left column (A 50:50 Joint Venture & Partner Cards) rises from bottom
         if (jvCards) {
             gsap.fromTo(jvCards,
-                { y: 35 },
+                { y: 70 },
                 {
                     y: 0,
-                    ease: 'none',
+                    ease: 'power1.out',
                     scrollTrigger: {
                         trigger: newsSection,
                         start: 'top bottom',
-                        end: 'top 30%',
-                        scrub: 1.0
+                        end: 'top 45%',
+                        scrub: 0.6,
+                        invalidateOnRefresh: true
+                    }
+                }
+            );
+        }
+
+        // 3. Right column ("News, Events and Notices" Card) rises from deeper bottom
+        if (newsContent) {
+            gsap.fromTo(newsContent,
+                { y: 100 },
+                {
+                    y: 0,
+                    ease: 'power1.out',
+                    scrollTrigger: {
+                        trigger: newsSection,
+                        start: 'top bottom',
+                        end: 'top 45%',
+                        scrub: 0.5,
+                        invalidateOnRefresh: true
                     }
                 }
             );
@@ -284,9 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetsContent = document.querySelector('.targets-content-parallax');
 
     if (targetsSection && targetsCard) {
-        // Expand from center: start more shrunk (scale: 0.84) -> 1.0 from center center
+        // Expand from center: scale 0.70 -> 1.0 from center center
         gsap.fromTo(targetsCard,
-            { scale: 0.84, transformOrigin: 'center center' },
+            { scale: 0.70, transformOrigin: 'center center' },
             {
                 scale: 1.0,
                 ease: 'none',
@@ -478,72 +483,72 @@ document.addEventListener('DOMContentLoaded', () => {
         // Steps 2 & 3: Docked and pinned under navbar
         const pinnedTl = gsap.timeline();
 
-        // ─── Step 2 (Image 2 state): 4 cards appear, BOTH backgrounds zoom in ───
+        // ─── Step 2: 4 cards appear, BOTH backgrounds zoom in gently ───
         // Row 2 rises into view (Customer focus & Operational excellence)
         pinnedTl.to(ourWayRow2, {
             y: 0,
             opacity: 1,
-            ease: 'power1.out',
+            ease: 'sine.out',
             stagger: 0.05,
-            duration: 0.45
+            duration: 0.5
         }, 0);
 
         // Both backgrounds zoom in smoothly in their current positions
         if (ourWayBgLeft) {
             pinnedTl.to(ourWayBgLeft, {
-                scale: 1.18,
-                ease: 'power1.out',
-                duration: 0.45
+                scale: 1.15,
+                ease: 'sine.out',
+                duration: 0.5
             }, 0);
         }
 
         if (ourWayBgRight) {
             pinnedTl.to(ourWayBgRight, {
-                scale: 1.18,
+                scale: 1.15,
                 x: 0,
                 opacity: 1,
-                ease: 'power1.out',
-                duration: 0.45
+                ease: 'sine.out',
+                duration: 0.5
             }, 0);
         }
 
-        // ─── Step 3 (Image 3 state): All 6 cards appear, left bg stays, right bg zooms & shifts right ───
+        // ─── Step 3: All 6 cards appear, right background glides slow and smooth to the right ───
         // Row 3 rises into view (Sustainability & Collaboration)
         pinnedTl.to(ourWayRow3, {
             y: 0,
             opacity: 1,
-            ease: 'power1.out',
+            ease: 'sine.out',
             stagger: 0.05,
-            duration: 0.55
-        }, 0.45);
+            duration: 0.75
+        }, 0.5);
 
         // Left background remains visible and anchored on the left
         if (ourWayBgLeft) {
             pinnedTl.to(ourWayBgLeft, {
-                y: 25,
+                y: 20,
                 ease: 'none',
-                duration: 0.55
-            }, 0.45);
+                duration: 0.75
+            }, 0.5);
         }
 
-        // Right background continues zooming AND shifts smoothly to the right with parallax
+        // Right background (refinery flame) shifts gently, slowly and smoothly to the right
         if (ourWayBgRight) {
             pinnedTl.to(ourWayBgRight, {
-                scale: 1.28,
-                x: 380,
-                opacity: 0.0,
-                ease: 'power1.inOut',
-                duration: 0.55
-            }, 0.45);
+                scale: 1.22,
+                x: 180,              // Gentle, slow drift to the right (was abrupt 380)
+                opacity: 0.25,        // Soft fade keeping subtle presence
+                ease: 'sine.inOut',  // Ultra-smooth sine easing with zero harsh jerks
+                duration: 0.75
+            }, 0.5);
         }
 
         ScrollTrigger.create({
             trigger: ourWaySec,
             start: () => 'top top+=' + getNavHeight(),
-            end: '+=500',
+            end: '+=850',            // Extended scroll distance makes the rightward glide slow and graceful
             pin: true,
             pinSpacing: true,
-            scrub: 1.0,
+            scrub: 1.8,              // Silky smooth inertia damping
             animation: pinnedTl,
             invalidateOnRefresh: true
         });
@@ -847,15 +852,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Scroll-triggered reveal animations for sections & cards
     const fadeUpElements = document.querySelectorAll('.gsap-fade-up');
     fadeUpElements.forEach((el) => {
-        gsap.fromTo(el, 
-            { 
-                opacity: 0, 
-                y: 35 
-            }, 
+        gsap.fromTo(el,
             {
-                opacity: 1, 
-                y: 0, 
-                duration: 0.85, 
+                opacity: 0,
+                y: 35
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.85,
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
@@ -871,13 +876,13 @@ document.addEventListener('DOMContentLoaded', () => {
     staggerContainers.forEach((container) => {
         const items = container.querySelectorAll('.gsap-stagger-item');
         if (items.length > 0) {
-            gsap.fromTo(items, 
-                { opacity: 0, y: 30 }, 
+            gsap.fromTo(items,
+                { opacity: 0, y: 30 },
                 {
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.75, 
-                    stagger: 0.14, 
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.75,
+                    stagger: 0.14,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: container,
