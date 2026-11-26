@@ -1,5 +1,5 @@
-<section id="faq" class="py-16 sm:py-24 bg-white relative z-20 border-b border-gray-100" x-data="{ activeFaq: 1 }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="faq" class="py-16 sm:py-24 bg-white relative z-20 border-b border-gray-100 will-change-transform" x-data="{ activeFaq: 1 }">
+    <div class="faq-content-wrapper max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 will-change-transform">
         
         {{-- Top Section: 2 Columns (Left: Title & Bus Illustration, Right: Accordion FAQs) --}}
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">

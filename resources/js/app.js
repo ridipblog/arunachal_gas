@@ -766,17 +766,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Phase 2: After section enters, images emerge faster and crisply from bottom
         if (journeyCards.length > 0) {
-            journeyTl.to(journeyCards,
+            journeyTl.fromTo(journeyCards,
+                { opacity: 0, y: initialCardY },
                 {
                     opacity: 1,
                     y: 0,
                     stagger: 0.07,
                     duration: 0.85, // Faster, snappier image entrance
-                    ease: 'power2.out'
+                    ease: 'power2.out',
+                    immediateRender: false
                 },
                 ">-0.2" // begins as section settles into place
             );
         }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ANIMATION 11: "Frequently Asked Questions" Section (#faq)
+    // • Trigger: Scrolling from #capturing-journey into #faq
+    // • Whole Section: Rises smoothly from deep below (y: 220 -> 0) with
+    //   slow, gentle fade and parallax scrub, settling into current position.
+    // ─────────────────────────────────────────────────────────────
+    const faqSec = document.getElementById('faq');
+    const faqWrapper = document.querySelector('.faq-content-wrapper');
+
+    if (faqSec) {
+        const isMobile = window.innerWidth < 768;
+        const target = faqWrapper || faqSec;
+
+        gsap.fromTo(target,
+            { opacity: 0, y: isMobile ? 120 : 220 },
+            {
+                opacity: 1,
+                y: 0,
+                ease: 'sine.inOut',
+                scrollTrigger: {
+                    trigger: faqSec,
+                    start: isMobile ? 'top 98%' : 'top 100%',
+                    end: isMobile ? 'top 32%' : 'top 38%',
+                    scrub: 2.2, // Slow, gentle scrub damping
+                    invalidateOnRefresh: true
+                }
+            }
+        );
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ANIMATION 12: Footer Section (#contact / footer)
+    // • Trigger: Scrolling from #faq into the footer
+    // • Whole Section: Comes from bottom (y: 200 -> 0) with smooth
+    //   fade and parallax scrub, settling into its resting position.
+    // ─────────────────────────────────────────────────────────────
+    const footerSec = document.getElementById('contact');
+
+    if (footerSec) {
+        const isMobile = window.innerWidth < 768;
+
+        gsap.fromTo(footerSec,
+            { opacity: 0, y: isMobile ? 100 : 200 },
+            {
+                opacity: 1,
+                y: 0,
+                ease: 'sine.inOut',
+                scrollTrigger: {
+                    trigger: footerSec,
+                    start: isMobile ? 'top 98%' : 'top 100%',
+                    end: 'bottom bottom',
+                    scrub: 2.2,
+                    invalidateOnRefresh: true
+                }
+            }
+        );
     }
     // 1. Scroll-triggered reveal animations for sections & cards
     const fadeUpElements = document.querySelectorAll('.gsap-fade-up');
