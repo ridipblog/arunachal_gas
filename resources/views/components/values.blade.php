@@ -1,12 +1,13 @@
-<section id="journey-milestones" class="py-16 sm:py-24 relative z-20 overflow-hidden bg-white border-b border-gray-100">
+<section id="journey-milestones" class="min-h-[calc(100vh-65px)] flex flex-col justify-center py-10 sm:py-14 relative z-20 overflow-hidden bg-white border-b border-gray-100">
     {{-- Parallax Background Image Layer (Pipeline & Scenic Hills) --}}
     <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         <img src="{{ asset('images/assets/Eco Energy Pipeline Landscape 1.png') }}" 
              alt="Eco Energy Pipeline Landscape" 
-             class="milestones-bg-parallax w-full h-auto min-h-[320px] object-cover object-bottom absolute bottom-0 left-0 right-0 will-change-transform">
+             class="milestones-bg-parallax w-full h-[75%] min-h-[480px] sm:min-h-[560px] object-cover object-bottom absolute left-0 right-0 will-change-transform"
+             style="bottom: -60px;">
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {{-- Section Title (Enters first smoothly) --}}
         <div class="text-center mb-14 sm:mb-16 milestones-title-parallax will-change-transform">

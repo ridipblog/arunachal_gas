@@ -346,52 +346,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─────────────────────────────────────────────────────────────
-    // ANIMATION 6: Journey So Far – Key Milestones Parallax
-    // Photo 1: User scrolls from #services-interactive
-    // Photo 2: Section docks under navbar: title & landscape in place, timeline cards hidden below
-    // Photo 3: Scrolling further: timeline cards rise up and peek from bottom fold
-    // Photo 4 & 5: Timeline cards and track settle into perfect center
+    // ANIMATION 6: Journey So Far – Key Milestones Slow & Smooth Parallax
+    // Slow, luxurious, continuous 2-phase parallax with deep inertia damping:
+    // • Phase 1 (First Scroll): Background floats slowly from bottom (y: 100) to
+    //   slightly above resting position (y: -18), cards glide up to half-peek (y: 105).
+    // • Phase 2 (Second Scroll): Background gently settles into actual position (y: 0),
+    //   and cards glide smoothly into full actual position (y: 0, 100% visible).
+    // • Ultra-smooth sine.inOut easing with scrub: 2.0 and gentle soft-snap damping.
     // ─────────────────────────────────────────────────────────────
     const milestonesSec = document.getElementById('journey-milestones');
+    const milestonesTitle = document.querySelector('.milestones-title-parallax');
     const milestonesBg = document.querySelector('.milestones-bg-parallax');
     const milestonesTimeline = document.querySelector('.milestones-timeline-parallax');
 
     if (milestonesSec && milestonesTimeline) {
-        // Timeline content smoothly rises from bottom to top (Photo 2 -> Photo 3 -> Photo 4/5)
-        gsap.fromTo(milestonesTimeline,
-            { y: 280, opacity: 0.15 },
-            {
-                y: 0,
-                opacity: 1,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: milestonesSec,
-                    start: () => 'top top+=' + getNavHeight(), // pins cleanly under navbar when arriving
-                    end: '+=450',
-                    scrub: 1.0,
-                    pin: true,
-                    pinSpacing: true,
-                    invalidateOnRefresh: true
-                }
-            }
-        );
+        const milestonesTl = gsap.timeline();
 
-        // Background landscape gentle parallax float from bottom to top
+        // ─── PHASE 1 (0 -> 0.5): Slow, deep parallax into half-peek state ───
+        // Background landscape rises smoothly from bottom (y: 60) to slightly above actual position (y: -20)
         if (milestonesBg) {
-            gsap.fromTo(milestonesBg,
-                { y: 70 },
-                {
-                    y: 0,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: milestonesSec,
-                        start: () => 'top top+=' + getNavHeight(),
-                        end: '+=450',
-                        scrub: 1.0
-                    }
-                }
+            milestonesTl.fromTo(milestonesBg,
+                { y: 60 },
+                { y: -20, ease: 'sine.inOut', duration: 0.5 },
+                0
             );
         }
+
+        // Title floats gently with subtle upward parallax
+        if (milestonesTitle) {
+            milestonesTl.fromTo(milestonesTitle,
+                { y: 35, opacity: 0.6 },
+                { y: -8, opacity: 1, ease: 'sine.inOut', duration: 0.5 },
+                0
+            );
+        }
+
+        // Timeline cards rise with smooth parallax into half-peek state (y: 105)
+        milestonesTl.fromTo(milestonesTimeline,
+            { y: 220, opacity: 0.6 },
+            { y: 105, opacity: 0.92, ease: 'sine.inOut', duration: 0.5 },
+            0
+        );
+
+        // ─── PHASE 2 (0.5 -> 1.0): Slow, graceful settlement into actual resting positions ───
+        // Background landscape gently settles into its resting position (y: 0)
+        if (milestonesBg) {
+            milestonesTl.to(milestonesBg,
+                { y: 0, ease: 'sine.inOut', duration: 0.5 },
+                0.5
+            );
+        }
+
+        // Title settles smoothly into its resting position (y: 0)
+        if (milestonesTitle) {
+            milestonesTl.to(milestonesTitle,
+                { y: 0, opacity: 1, ease: 'sine.inOut', duration: 0.5 },
+                0.5
+            );
+        }
+
+        // Timeline cards glide gracefully into their final actual position (y: 0, opacity: 1)
+        milestonesTl.to(milestonesTimeline,
+            { y: 0, opacity: 1, ease: 'sine.inOut', duration: 0.5 },
+            0.5
+        );
+
+        // Slow, luxurious scroll distance (+=650) with heavy scrub inertia (2.0) for genuine parallax
+        ScrollTrigger.create({
+            trigger: milestonesSec,
+            start: () => 'top top+=' + getNavHeight(),
+            end: '+=650',
+            pin: true,
+            pinSpacing: true,
+            scrub: 2.0, // Heavy, silky-smooth inertia damping (feels like genuine physical parallax)
+            snap: {
+                snapTo: [0, 0.5, 1],
+                duration: { min: 0.45, max: 0.75 },
+                delay: 0.12, // Delayed soft snap ensures continuous fluid scroll without harsh sudden jumps
+                ease: 'sine.out'
+            },
+            animation: milestonesTl,
+            invalidateOnRefresh: true
+        });
     }
 
     // ─────────────────────────────────────────────────────────────
@@ -826,7 +862,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ANIMATION 12: Footer Section (#contact / footer)
     // • Trigger: Scrolling from #faq into the footer
     // • Whole Section: Comes from bottom (y: 200 -> 0) with smooth
-    //   fade and parallax scrub, settling into its resting position.
+    //   parallax scrub (solid 100% opacity, no fade).
     // ─────────────────────────────────────────────────────────────
     const footerSec = document.getElementById('contact');
 
@@ -834,9 +870,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = window.innerWidth < 768;
 
         gsap.fromTo(footerSec,
-            { opacity: 0, y: isMobile ? 100 : 200 },
+            { y: isMobile ? 100 : 200 },
             {
-                opacity: 1,
                 y: 0,
                 ease: 'sine.inOut',
                 scrollTrigger: {
