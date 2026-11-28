@@ -129,9 +129,14 @@
                          @mouseleave="stopDrag()"
                          class="overflow-x-auto scroll-smooth py-6 select-none cursor-grab active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         
+                        @php
+                            $trackMinWidth = max($count * 145 + 96, 1100);
+                            $trackWidth = $count * 145 + 96;
+                        @endphp
+
                         {{-- Linear Track with Dynamic Min-Width (balanced 145px per milestone slot) --}}
                         <div class="relative h-[340px] flex items-center px-12"
-                             style="min-width: {{ max($count * 145 + 96, 1100) }}px; width: max(100%, {{ $count * 145 + 96 }}px);">
+                             {!! 'style="min-width: ' . $trackMinWidth . 'px; width: max(100%, ' . $trackWidth . 'px);"' !!}>
                             
                             {{-- Continuous Sky-Blue Timeline Bar --}}
                             <div class="absolute top-[170px] left-8 right-8 h-[3.5px] bg-[#48CAE4] rounded-full -translate-y-1/2 z-0"></div>
