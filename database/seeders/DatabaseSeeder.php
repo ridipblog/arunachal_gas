@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\HeroSlide;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -119,6 +120,38 @@ class DatabaseSeeder extends Seeder
             Service::updateOrCreate(
                 ['slug' => $svc['slug']],
                 $svc
+            );
+        }
+
+        // 3. Seed Initial 3 Hero Slides
+        $heroSlides = [
+            [
+                'title' => 'Connecting Arunachal Pradesh to a Cleaner Energy Future',
+                'image_path' => 'images/assets/Group 1000002719.png',
+                'image_alt' => 'Connecting Arunachal Pradesh to a Cleaner Energy Future',
+                'order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Empowering Transportation with Cleaner Energy for a Better Tomorrow',
+                'image_path' => 'images/assets/hero_2.png',
+                'image_alt' => 'Empowering Transportation with Cleaner Energy for a Better Tomorrow',
+                'order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Bringing Safe and Reliable Natural Gas to Your Home',
+                'image_path' => 'images/assets/hero_3.png',
+                'image_alt' => 'Bringing Safe and Reliable Natural Gas to Your Home',
+                'order' => 3,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($heroSlides as $slide) {
+            HeroSlide::updateOrCreate(
+                ['title' => $slide['title']],
+                $slide
             );
         }
     }

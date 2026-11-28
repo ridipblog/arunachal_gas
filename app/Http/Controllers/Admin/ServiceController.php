@@ -23,7 +23,7 @@ class ServiceController extends Controller
         $errorDetails = null;
 
         try {
-            $services = Service::orderBy('oder')->orderBy('id')->get();
+            $services = Service::orderBy('order')->orderBy('id')->get();
         } catch (Throwable $e) {
             report($e);
             $services = collect();

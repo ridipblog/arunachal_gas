@@ -1,6 +1,6 @@
 <x-layouts.app>
     {{-- 1. Hero Carousel Slider --}}
-    <x-hero-slider />
+    <x-hero-slider :slides="$heroSlides ?? []" />
 
     {{-- 2. Bringing Clean Energy to the Land of the Rising Sun --}}
     <x-jv-partners />

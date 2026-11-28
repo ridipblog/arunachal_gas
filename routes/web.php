@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Public\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -39,4 +40,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
     Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
     Route::post('/services/{service}/toggle', [ServiceController::class, 'toggleStatus'])->name('services.toggle');
+
+    // Hero Slides Manager
+    Route::get('/hero-slides', [HeroSlideController::class, 'index'])->name('hero-slides.index');
+    Route::post('/hero-slides', [HeroSlideController::class, 'store'])->name('hero-slides.store');
+    Route::put('/hero-slides/{heroSlide}', [HeroSlideController::class, 'update'])->name('hero-slides.update');
+    Route::delete('/hero-slides/{heroSlide}', [HeroSlideController::class, 'destroy'])->name('hero-slides.destroy');
+    Route::post('/hero-slides/{heroSlide}/toggle', [HeroSlideController::class, 'toggleStatus'])->name('hero-slides.toggle');
 });

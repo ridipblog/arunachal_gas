@@ -1,3 +1,5 @@
+@props(['slides' => []])
+
 {{-- Hero Section Container --}}
 <section id="hero-section-wrap"
     class="relative z-20 w-full px-3 sm:px-5 lg:px-8 pt-3 sm:pt-4 pb-2">
@@ -8,52 +10,42 @@
         x-data="{
             currentSlide: 0,
 
-            slides: [
-                {
-                    id: 0,
-                    img: '{{ asset('images/assets/Group 1000002719.png') }}',
-                    alt: 'Connecting Arunachal Pradesh to a Cleaner Energy Future'
-                },
-                {
-                    id: 1,
-                    img: '{{ asset('images/assets/hero_2.png') }}',
-                    alt: 'Empowering Transportation with Cleaner Energy for a Better Tomorrow'
-                },
-                {
-                    id: 2,
-                    img: '{{ asset('images/assets/hero_3.png') }}',
-                    alt: 'Bringing Safe and Reliable Natural Gas to Your Home'
-                }
-            ],
+            slides: {{ json_encode($slides ?? []) }},
 
             timer: null,
 
             init() {
-                this.startAutoplay();
+                if (this.slides?.length > 1) {
+                    this.startAutoplay();
+                }
             },
 
             next() {
+                if (!this.slides?.length) return;
                 this.currentSlide =
                     (this.currentSlide + 1) % this.slides.length;
                 this.resetAutoplay();
             },
 
             prev() {
+                if (!this.slides?.length) return;
                 this.currentSlide =
                     (this.currentSlide - 1 + this.slides.length) % this.slides.length;
                 this.resetAutoplay();
             },
 
             startAutoplay() {
+                if (this.slides?.length <= 1) return;
                 this.timer = setInterval(() => {
-                    this.currentSlide =
-                        (this.currentSlide + 1) % this.slides.length;
+                    this.next();
                 }, 4500);
             },
 
             resetAutoplay() {
                 clearInterval(this.timer);
-                this.startAutoplay();
+                if (this.slides?.length > 1) {
+                    this.startAutoplay();
+                }
             }
         }">
 
@@ -63,7 +55,7 @@
                    overflow-hidden shadow-xs border border-gray-100 bg-white">
 
             {{-- Hero Slides --}}
-            <template x-for="(slide, index) in slides" :key="slide.id">
+            <template x-for="(slide, index) in (slides || [])" :key="slide?.id || index">
 
                 <div x-show="currentSlide === index"
                     x-transition:enter="transition-opacity duration-500 ease-out"
@@ -76,8 +68,8 @@
 
                     {{-- Image Cover --}}
                     <img
-                        :src="slide.img"
-                        :alt="slide.alt"
+                        :src="slide?.image_url || slide?.img || ''"
+                        :alt="slide?.image_alt || slide?.alt || slide?.title || 'Hero Slide'"
                         class="absolute inset-0 w-full h-full object-cover object-center block select-none pointer-events-none"
                         draggable="false">
 
@@ -85,8 +77,9 @@
 
             </template>
 
-            {{-- Navigation Buttons Cutout --}}
-            <div class="absolute bottom-0 right-0 bg-white
+            {{-- Navigation Buttons Cutout (Only shown when there are 2 or more slides) --}}
+            <div x-show="slides?.length > 1"
+                class="absolute bottom-0 right-0 bg-white
                         p-1.5 sm:p-2 md:p-2.5
                         rounded-tl-2xl sm:rounded-tl-3xl
                         z-20 flex items-center
