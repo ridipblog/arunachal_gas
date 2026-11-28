@@ -12,7 +12,7 @@
     <x-services-grid />
 
     {{-- 5. Explore Our Services (Interactive Accordion) --}}
-    <x-journey-timeline />
+    <x-journey-timeline :services="$services ?? []" />
 
     {{-- 6. Journey So Far - Key Milestones (Alternating Timeline) --}}
     <x-values />
