@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
 use App\Models\Service;
-use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Throwable;
 
@@ -30,9 +29,7 @@ class HomeController extends Controller
                 ->orderBy('id')
                 ->get();
         } catch (Throwable $e) {
-            Log::channel('daily')->error('Failed to load homepage content: '.$e->getMessage(), [
-                'exception' => $e,
-            ]);
+            report($e);
         }
 
         if ($heroSlides->isEmpty()) {
