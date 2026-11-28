@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Enums\NoticeBadge;
+use App\Enums\NoticeType;
 use App\Models\HeroSlide;
+use App\Models\Notice;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -152,6 +155,57 @@ class DatabaseSeeder extends Seeder
             HeroSlide::updateOrCreate(
                 ['title' => $slide['title']],
                 $slide
+            );
+        }
+
+        // 4. Seed Initial 4 News, Events and Notices
+        $notices = [
+            [
+                'title' => 'Quarterly Safety Audit',
+                'description' => 'Scheduled for 24th Oct. All personnel are required to participate.',
+                'date_text' => '23 Oct 2026 - 10:00 AM',
+                'badge' => NoticeBadge::New,
+                'type' => NoticeType::Notice,
+                'icon_path' => 'images/assets/Quarterly Safety Audit.png',
+                'order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'New Compliance Guidelines',
+                'description' => 'Updated policy documents are now available on the internal portal.',
+                'date_text' => '22 Oct 2026 - 02:30 PM',
+                'badge' => NoticeBadge::New,
+                'type' => NoticeType::Notice,
+                'icon_path' => 'images/assets/New Compliance Guidelines.png',
+                'order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Town Hall Meeting',
+                'description' => 'Join us for the Q3 performance review and future roadmap discussion.',
+                'date_text' => '21 Oct 2026 - 11:00 AM',
+                'badge' => NoticeBadge::New,
+                'type' => NoticeType::Event,
+                'icon_path' => 'images/assets/Town Hall Meeting.png',
+                'order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'IT System Maintenance',
+                'description' => 'Scheduled downtime for system upgrades. Expect service interruptions.',
+                'date_text' => '25 Oct 2026 - 08:00 PM',
+                'badge' => NoticeBadge::Upcoming,
+                'type' => NoticeType::Notice,
+                'icon_path' => 'images/assets/IT System Maintenance.png',
+                'order' => 4,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($notices as $notice) {
+            Notice::updateOrCreate(
+                ['title' => $notice['title']],
+                $notice
             );
         }
     }

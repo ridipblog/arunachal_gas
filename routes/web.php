@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroSlideController;
+use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Public\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -47,4 +48,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('/hero-slides/{heroSlide}', [HeroSlideController::class, 'update'])->name('hero-slides.update');
     Route::delete('/hero-slides/{heroSlide}', [HeroSlideController::class, 'destroy'])->name('hero-slides.destroy');
     Route::post('/hero-slides/{heroSlide}/toggle', [HeroSlideController::class, 'toggleStatus'])->name('hero-slides.toggle');
+
+    // News, Events & Notices Manager
+    Route::get('/notices', [NoticeController::class, 'index'])->name('notices.index');
+    Route::post('/notices', [NoticeController::class, 'store'])->name('notices.store');
+    Route::put('/notices/{notice}', [NoticeController::class, 'update'])->name('notices.update');
+    Route::delete('/notices/{notice}', [NoticeController::class, 'destroy'])->name('notices.destroy');
+    Route::post('/notices/{notice}/toggle', [NoticeController::class, 'toggleStatus'])->name('notices.toggle');
 });

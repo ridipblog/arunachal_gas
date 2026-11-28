@@ -1,3 +1,5 @@
+@props(['notices' => []])
+
 <section id="joint-venture" class="py-16 sm:py-20 relative overflow-hidden bg-white will-change-transform">
     {{-- Parallax Background Image Layer (Uses only Misty Mountain Wave Landscape 1.png) --}}
     <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
@@ -67,69 +69,35 @@
                     </h2>
                 </div>
 
-                {{-- Notices Card Container with 4 Items --}}
+                {{-- Notices Card Container with Dynamic Items --}}
                 <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-gray-100 divide-y divide-gray-100">
-                    
-                    {{-- Notice 1: Quarterly Safety Audit --}}
-                    <div class="py-3 first:pt-1 last:pb-1 flex items-start space-x-3">
-                        <img src="{{ asset('images/assets/Quarterly Safety Audit.png') }}" 
-                             alt="Quarterly Safety Audit" 
-                             class="w-7 h-7 flex-shrink-0 mt-0.5 object-contain">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs font-bold text-gray-900 leading-tight">Quarterly Safety Audit</h4>
-                            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Scheduled for 24th Oct. All personnel are required to participate.</p>
-                            <span class="text-[10px] text-gray-400 block mt-1">23 Oct 2026 - 10:00 AM</span>
+                    @forelse (($notices ?? []) as $notice)
+                        <div class="py-3 first:pt-1 last:pb-1 flex items-start space-x-3">
+                            <img src="{{ $notice?->icon_url }}" 
+                                 alt="{{ $notice?->title ?? 'Notice' }}" 
+                                 class="w-7 h-7 flex-shrink-0 mt-0.5 object-contain">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-xs font-bold text-gray-900 leading-tight">
+                                    {{ $notice?->title ?? 'Untitled' }}
+                                </h4>
+                                <p class="text-[11px] text-gray-500 leading-snug mt-0.5 line-clamp-2">
+                                    {{ $notice?->description ?? '' }}
+                                </p>
+                                <span class="text-[10px] text-gray-400 block mt-1">
+                                    {{ $notice?->date_text ?? '' }}
+                                </span>
+                            </div>
+                            @if ($notice?->badge)
+                                <span class="text-[10px] font-bold tracking-wider uppercase flex-shrink-0 px-2.5 py-0.5 rounded-[999px] border {{ $notice->badge->colorClasses() }}">
+                                    {{ $notice->badge->value }}
+                                </span>
+                            @endif
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
-                            NEW
-                        </span>
-                    </div>
-
-                    {{-- Notice 2: New Compliance Guidelines --}}
-                    <div class="py-3 flex items-start space-x-3">
-                        <img src="{{ asset('images/assets/New Compliance Guidelines.png') }}" 
-                             alt="New Compliance Guidelines" 
-                             class="w-7 h-7 flex-shrink-0 mt-0.5 object-contain">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs font-bold text-gray-900 leading-tight">New Compliance Guidelines</h4>
-                            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Updated policy documents are now available on the internal portal.</p>
-                            <span class="text-[10px] text-gray-400 block mt-1">22 Oct 2026 - 02:30 PM</span>
+                    @empty
+                        <div class="py-8 text-center text-xs text-gray-400">
+                            No active notices or events at this time.
                         </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
-                            NEW
-                        </span>
-                    </div>
-
-                    {{-- Notice 3: Town Hall Meeting --}}
-                    <div class="py-3 flex items-start space-x-3">
-                        <img src="{{ asset('images/assets/Town Hall Meeting.png') }}" 
-                             alt="Town Hall Meeting" 
-                             class="w-7 h-7 flex-shrink-0 mt-0.5 object-contain">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs font-bold text-gray-900 leading-tight">Town Hall Meeting</h4>
-                            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Join us for the Q3 performance review and future roadmap discussion.</p>
-                            <span class="text-[10px] text-gray-400 block mt-1">21 Oct 2026 - 11:00 AM</span>
-                        </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
-                            NEW
-                        </span>
-                    </div>
-
-                    {{-- Notice 4: IT System Maintenance --}}
-                    <div class="py-3 last:pb-1 flex items-start space-x-3">
-                        <img src="{{ asset('images/assets/IT System Maintenance.png') }}" 
-                             alt="IT System Maintenance" 
-                             class="w-7 h-7 flex-shrink-0 mt-0.5 object-contain">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs font-bold text-gray-900 leading-tight">IT System Maintenance</h4>
-                            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Scheduled downtime for system upgrades. Expect service interruptions.</p>
-                            <span class="text-[10px] text-gray-400 block mt-1">25 Oct 2026 - 08:00 PM</span>
-                        </div>
-                        <span class="text-[10px] font-bold text-[#16A34A] tracking-wider uppercase flex-shrink-0 bg-[#F0F9F3] px-2.5 py-0.5 rounded-[999px]">
-                            UPCOMING
-                        </span>
-                    </div>
-
+                    @endforelse
                 </div>
             </div>
 

@@ -6,7 +6,7 @@
     <x-jv-partners />
 
     {{-- 3. A 50:50 Joint Venture & News Notices --}}
-    <x-targets-pipeline />
+    <x-targets-pipeline :notices="$notices ?? []" />
 
     {{-- 4. Our Key Development Targets --}}
     <x-services-grid />

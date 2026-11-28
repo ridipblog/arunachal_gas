@@ -17,7 +17,7 @@ class HomePageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
-        $response->assertViewHasAll(['services', 'heroSlides']);
+        $response->assertViewHasAll(['services', 'heroSlides', 'notices']);
     }
 
     public function test_homepage_displays_active_services_and_hero_slides(): void

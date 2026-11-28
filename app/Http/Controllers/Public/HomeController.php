@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
+use App\Models\Notice;
 use App\Models\Service;
 use Illuminate\View\View;
 use Throwable;
@@ -17,6 +18,7 @@ class HomeController extends Controller
     {
         $services = collect();
         $heroSlides = collect();
+        $notices = collect();
 
         try {
             $services = Service::where('is_active', true)
@@ -28,6 +30,11 @@ class HomeController extends Controller
                 ->orderBy('order')
                 ->orderBy('id')
                 ->get();
+
+            $notices = Notice::where('is_active', true)
+                ->orderBy('order')
+                ->orderBy('id')
+                ->get();
         } catch (Throwable $e) {
             report($e);
         }
@@ -36,7 +43,7 @@ class HomeController extends Controller
             $heroSlides = $this->fallbackHeroSlides();
         }
 
-        return view('welcome', compact('services', 'heroSlides'));
+        return view('welcome', compact('services', 'heroSlides', 'notices'));
     }
 
     /**
