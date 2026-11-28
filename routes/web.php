@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\JourneyCardController;
+use App\Http\Controllers\Admin\MilestoneController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Public\HomeController;
@@ -63,4 +64,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('/journey-cards/{journeyCard}', [JourneyCardController::class, 'update'])->name('journey-cards.update');
     Route::delete('/journey-cards/{journeyCard}', [JourneyCardController::class, 'destroy'])->name('journey-cards.destroy');
     Route::post('/journey-cards/{journeyCard}/toggle', [JourneyCardController::class, 'toggleStatus'])->name('journey-cards.toggle');
+
+    // Journey So Far – Key Milestones Manager
+    Route::get('/milestones', [MilestoneController::class, 'index'])->name('milestones.index');
+    Route::post('/milestones', [MilestoneController::class, 'store'])->name('milestones.store');
+    Route::put('/milestones/{milestone}', [MilestoneController::class, 'update'])->name('milestones.update');
+    Route::delete('/milestones/{milestone}', [MilestoneController::class, 'destroy'])->name('milestones.destroy');
+    Route::post('/milestones/{milestone}/toggle', [MilestoneController::class, 'toggleStatus'])->name('milestones.toggle');
 });

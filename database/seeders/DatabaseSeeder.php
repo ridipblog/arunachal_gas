@@ -6,6 +6,7 @@ use App\Enums\NoticeBadge;
 use App\Enums\NoticeType;
 use App\Models\HeroSlide;
 use App\Models\JourneyCard;
+use App\Models\Milestone;
 use App\Models\Notice;
 use App\Models\Service;
 use App\Models\User;
@@ -258,6 +259,81 @@ class DatabaseSeeder extends Seeder
             JourneyCard::updateOrCreate(
                 ['title' => $card['title']],
                 $card
+            );
+        }
+
+        // 6. Seed Initial 8 Key Milestones for Journey Timeline
+        $milestones = [
+            [
+                'period' => 'Dec 2023',
+                'title' => 'BPCL Board approves bid strategy for CGD Round 12 & 12A',
+                'icon' => 'document',
+                'is_highlighted' => false,
+                'order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Apr 2024',
+                'title' => 'PNGRB grants CGD authorisation for GA-12.01 to BPCL–OIL Consortium',
+                'icon' => 'gavel',
+                'is_highlighted' => false,
+                'order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Oct–Nov 2024',
+                'title' => 'BPCL & OIL Boards approve JVA; DIPAM/MoPNG guidelines followed',
+                'icon' => 'handshake',
+                'is_highlighted' => false,
+                'order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Jun 2025',
+                'title' => 'DIPAM concurrence & MoPNG approval received for JV formation',
+                'icon' => 'verified',
+                'is_highlighted' => false,
+                'order' => 4,
+                'is_active' => true,
+            ],
+            [
+                'period' => '2025–26',
+                'title' => 'AGPL incorporated; Board, CEO, CFO and core team operationalised',
+                'icon' => 'users',
+                'is_highlighted' => false,
+                'order' => 5,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Jun 2026',
+                'title' => "Stakeholder outreach launched — DC-ICR, Director (Earth Sciences), Hon'ble Home Minister, Arunachal Pradesh",
+                'icon' => 'megaphone',
+                'is_highlighted' => false,
+                'order' => 6,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Aug 2026',
+                'title' => "Namsai district engagement — Hon'ble MLA & DC Namsai; Namsai proposed as role-model district",
+                'icon' => 'map-pin',
+                'is_highlighted' => false,
+                'order' => 7,
+                'is_active' => true,
+            ],
+            [
+                'period' => 'Aug 2026',
+                'title' => 'Management Review — governance, procurement and financing workstreams active',
+                'icon' => 'settings',
+                'is_highlighted' => true,
+                'order' => 8,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($milestones as $milestone) {
+            Milestone::updateOrCreate(
+                ['title' => $milestone['title']],
+                $milestone
             );
         }
     }

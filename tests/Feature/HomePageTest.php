@@ -6,6 +6,7 @@ use App\Enums\NoticeBadge;
 use App\Enums\NoticeType;
 use App\Models\HeroSlide;
 use App\Models\JourneyCard;
+use App\Models\Milestone;
 use App\Models\Notice;
 use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,7 +23,7 @@ class HomePageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
-        $response->assertViewHasAll(['services', 'heroSlides', 'notices', 'journeyCards']);
+        $response->assertViewHasAll(['services', 'heroSlides', 'notices', 'journeyCards', 'milestones']);
     }
 
     public function test_homepage_displays_active_services_and_hero_slides(): void
@@ -130,5 +131,32 @@ class HomePageTest extends TestCase
         $notices = $response->viewData('notices');
         $this->assertCount(4, $notices);
         $this->assertSame('Notice 6', $notices->first()->title);
+    }
+
+    public function test_homepage_displays_key_milestones(): void
+    {
+        Milestone::create([
+            'period' => 'Dec 2023',
+            'title' => 'Test Milestone Event Title',
+            'icon' => 'document',
+            'is_highlighted' => false,
+            'order' => 1,
+            'is_active' => true,
+        ]);
+
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Test Milestone Event Title');
+        $response->assertSee('Dec 2023');
+    }
+
+    public function test_values_component_renders_gracefully_with_empty_or_null_milestones(): void
+    {
+        $viewWithNull = $this->blade('<x-values :milestones="null" />');
+        $viewWithNull->assertSee('Journey So Far');
+
+        $viewWithEmpty = $this->blade('<x-values :milestones="[]" />');
+        $viewWithEmpty->assertSee('Journey So Far');
     }
 }

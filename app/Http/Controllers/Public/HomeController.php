@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
 use App\Models\JourneyCard;
+use App\Models\Milestone;
 use App\Models\Notice;
 use App\Models\Service;
 use Illuminate\View\View;
@@ -21,6 +22,7 @@ class HomeController extends Controller
         $heroSlides = collect();
         $notices = collect();
         $journeyCards = collect();
+        $milestones = collect();
 
         try {
             $services = Service::where('is_active', true)
@@ -44,6 +46,11 @@ class HomeController extends Controller
                 ->orderByDesc('id')
                 ->take(5)
                 ->get();
+
+            $milestones = Milestone::where('is_active', true)
+                ->orderBy('order')
+                ->orderBy('id')
+                ->get();
         } catch (Throwable $e) {
             report($e);
         }
@@ -56,7 +63,86 @@ class HomeController extends Controller
             $journeyCards = $this->fallbackJourneyCards();
         }
 
-        return view('welcome', compact('services', 'heroSlides', 'notices', 'journeyCards'));
+        if ($milestones->isEmpty()) {
+            $milestones = $this->fallbackMilestones();
+        }
+
+        return view('welcome', compact('services', 'heroSlides', 'notices', 'journeyCards', 'milestones'));
+    }
+
+    /**
+     * Fallback key milestones used when no milestones are published or the database is unavailable.
+     *
+     * @return list<array{id: int, period: string, title: string, icon: string, is_highlighted: bool, order: int}>
+     */
+    private function fallbackMilestones(): array
+    {
+        return [
+            [
+                'id' => 1,
+                'period' => 'Dec 2023',
+                'title' => 'BPCL Board approves bid strategy for CGD Round 12 & 12A',
+                'icon' => 'document',
+                'is_highlighted' => false,
+                'order' => 1,
+            ],
+            [
+                'id' => 2,
+                'period' => 'Apr 2024',
+                'title' => 'PNGRB grants CGD authorisation for GA-12.01 to BPCL–OIL Consortium',
+                'icon' => 'gavel',
+                'is_highlighted' => false,
+                'order' => 2,
+            ],
+            [
+                'id' => 3,
+                'period' => 'Oct–Nov 2024',
+                'title' => 'BPCL & OIL Boards approve JVA; DIPAM/MoPNG guidelines followed',
+                'icon' => 'handshake',
+                'is_highlighted' => false,
+                'order' => 3,
+            ],
+            [
+                'id' => 4,
+                'period' => 'Jun 2025',
+                'title' => 'DIPAM concurrence & MoPNG approval received for JV formation',
+                'icon' => 'verified',
+                'is_highlighted' => false,
+                'order' => 4,
+            ],
+            [
+                'id' => 5,
+                'period' => '2025–26',
+                'title' => 'AGPL incorporated; Board, CEO, CFO and core team operationalised',
+                'icon' => 'users',
+                'is_highlighted' => false,
+                'order' => 5,
+            ],
+            [
+                'id' => 6,
+                'period' => 'Jun 2026',
+                'title' => "Stakeholder outreach launched — DC-ICR, Director (Earth Sciences), Hon'ble Home Minister, Arunachal Pradesh",
+                'icon' => 'megaphone',
+                'is_highlighted' => false,
+                'order' => 6,
+            ],
+            [
+                'id' => 7,
+                'period' => 'Aug 2026',
+                'title' => "Namsai district engagement — Hon'ble MLA & DC Namsai; Namsai proposed as role-model district",
+                'icon' => 'map-pin',
+                'is_highlighted' => false,
+                'order' => 7,
+            ],
+            [
+                'id' => 8,
+                'period' => 'Aug 2026',
+                'title' => 'Management Review — governance, procurement and financing workstreams active',
+                'icon' => 'settings',
+                'is_highlighted' => true,
+                'order' => 8,
+            ],
+        ];
     }
 
     /**

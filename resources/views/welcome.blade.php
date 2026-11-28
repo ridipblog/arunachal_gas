@@ -15,7 +15,7 @@
     <x-journey-timeline :services="$services ?? []" />
 
     {{-- 6. Journey So Far - Key Milestones (Alternating Timeline) --}}
-    <x-values />
+    <x-values :milestones="$milestones ?? []" />
 
     {{-- 7. Our Way of Working (6 Principles Grid) --}}
     <x-why-choose-us />
