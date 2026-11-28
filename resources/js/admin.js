@@ -4,6 +4,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { serviceManager } from './admin/services.js';
 import { heroManager } from './admin/hero.js';
 import { noticeManager } from './admin/notices.js';
+import { journeyManager } from './admin/journey.js';
 
 window.Alpine = Alpine;
 window.Swal = Swal;
@@ -12,6 +13,7 @@ window.Swal = Swal;
 Alpine.data('serviceManager', serviceManager);
 Alpine.data('heroManager', heroManager);
 Alpine.data('noticeManager', noticeManager);
+Alpine.data('journeyManager', journeyManager);
 
 // Start Alpine for the admin panel
 Alpine.start();

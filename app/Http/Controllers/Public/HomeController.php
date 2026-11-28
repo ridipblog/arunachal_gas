@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
+use App\Models\JourneyCard;
 use App\Models\Notice;
 use App\Models\Service;
 use Illuminate\View\View;
@@ -19,6 +20,7 @@ class HomeController extends Controller
         $services = collect();
         $heroSlides = collect();
         $notices = collect();
+        $journeyCards = collect();
 
         try {
             $services = Service::where('is_active', true)
@@ -35,6 +37,12 @@ class HomeController extends Controller
                 ->orderBy('order')
                 ->orderBy('id')
                 ->get();
+
+            $journeyCards = JourneyCard::where('is_active', true)
+                ->latest()
+                ->orderByDesc('id')
+                ->take(5)
+                ->get();
         } catch (Throwable $e) {
             report($e);
         }
@@ -43,7 +51,57 @@ class HomeController extends Controller
             $heroSlides = $this->fallbackHeroSlides();
         }
 
-        return view('welcome', compact('services', 'heroSlides', 'notices'));
+        if ($journeyCards->isEmpty()) {
+            $journeyCards = $this->fallbackJourneyCards();
+        }
+
+        return view('welcome', compact('services', 'heroSlides', 'notices', 'journeyCards'));
+    }
+
+    /**
+     * Fallback journey cards used when no journey cards are published or the database is unavailable.
+     *
+     * @return list<array{id: int, title: string, description: string, image_url: string, image_alt: string}>
+     */
+    private function fallbackJourneyCards(): array
+    {
+        return [
+            [
+                'id' => 1,
+                'title' => 'Energy Infrastructure',
+                'description' => 'Building safe energy networks for tomorrow.',
+                'image_url' => asset('images/assets/journey_1.png'),
+                'image_alt' => 'Energy Infrastructure',
+            ],
+            [
+                'id' => 2,
+                'title' => 'People Behind Progress',
+                'description' => 'Our teams making a difference every day.',
+                'image_url' => asset('images/assets/journey_2.png'),
+                'image_alt' => 'People Behind Progress',
+            ],
+            [
+                'id' => 3,
+                'title' => 'Towards a Greener Future',
+                'description' => 'Moving towards sustainable energy solutions.',
+                'image_url' => asset('images/assets/journey_3.png'),
+                'image_alt' => 'Towards a Greener Future',
+            ],
+            [
+                'id' => 4,
+                'title' => 'Events & Engagements',
+                'description' => 'Connecting people and ideas.',
+                'image_url' => asset('images/assets/journey_4.png'),
+                'image_alt' => 'Events & Engagements',
+            ],
+            [
+                'id' => 5,
+                'title' => 'Collaboration & Planning',
+                'description' => 'Working together towards shared goals.',
+                'image_url' => asset('images/assets/journey_5.png'),
+                'image_alt' => 'Collaboration & Planning',
+            ],
+        ];
     }
 
     /**

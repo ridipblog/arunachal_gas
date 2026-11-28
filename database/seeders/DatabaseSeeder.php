@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\NoticeBadge;
 use App\Enums\NoticeType;
 use App\Models\HeroSlide;
+use App\Models\JourneyCard;
 use App\Models\Notice;
 use App\Models\Service;
 use App\Models\User;
@@ -206,6 +207,57 @@ class DatabaseSeeder extends Seeder
             Notice::updateOrCreate(
                 ['title' => $notice['title']],
                 $notice
+            );
+        }
+
+        // 5. Seed Initial 5 Capturing Our Journey Bento Cards
+        $journeyCards = [
+            [
+                'title' => 'Energy Infrastructure',
+                'description' => 'Building safe energy networks for tomorrow.',
+                'image_path' => 'images/assets/journey_1.png',
+                'image_alt' => 'Energy Infrastructure in Arunachal Pradesh',
+                'order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'People Behind Progress',
+                'description' => 'Our teams making a difference every day.',
+                'image_path' => 'images/assets/journey_2.png',
+                'image_alt' => 'People Behind Progress - AGPL Field Engineers',
+                'order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Towards a Greener Future',
+                'description' => 'Moving towards sustainable energy solutions.',
+                'image_path' => 'images/assets/journey_3.png',
+                'image_alt' => 'Towards a Greener Future - Clean Energy for Arunachal',
+                'order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Events & Engagements',
+                'description' => 'Connecting people and ideas.',
+                'image_path' => 'images/assets/journey_4.png',
+                'image_alt' => 'Community Events and Public Engagements',
+                'order' => 4,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Collaboration & Planning',
+                'description' => 'Working together towards shared goals.',
+                'image_path' => 'images/assets/journey_5.png',
+                'image_alt' => 'Engineering Collaboration and Regional Planning',
+                'order' => 5,
+                'is_active' => true,
+            ],
+        ];
+
+        foreach ($journeyCards as $card) {
+            JourneyCard::updateOrCreate(
+                ['title' => $card['title']],
+                $card
             );
         }
     }

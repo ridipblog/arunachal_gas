@@ -1,3 +1,5 @@
+@props(['cards' => []])
+
 <section id="capturing-journey" class="py-16 sm:py-24 bg-[#f4f9f6] relative z-20 border-b border-gray-100 will-change-transform">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -21,96 +23,32 @@
             </div>
         </div>
 
-        {{-- 3-Column Photographic Gallery Grid (Matching Figma 5-Photo Showcase) --}}
-        <div class="journey-gallery-grid grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
-
-            {{-- Column 1: Tall Energy Infrastructure Card (Spans 4 cols on md+) --}}
-            <div class="md:col-span-4 flex flex-col">
-                <div class="journey-card opacity-0 relative w-full h-full min-h-[380px] md:min-h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
-                    <img src="{{ asset('images/assets/journey_1.png') }}"
-                        alt="Energy Infrastructure"
+        {{-- 3-Column Photographic Gallery Bento Grid (Matching 5-Photo Showcase) --}}
+        <div class="journey-gallery-grid grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 md:grid-flow-col gap-5">
+            @foreach ((is_iterable($cards) ? $cards : []) as $index => $card)
+                @php
+                    $isObject = is_object($card);
+                    $imageUrl = $isObject ? ($card->image_url ?? asset('images/assets/journey_' . ($index + 1) . '.png')) : ($card['image_url'] ?? asset('images/assets/journey_' . ($index + 1) . '.png'));
+                    $title = $isObject ? ($card->title ?? '') : ($card['title'] ?? '');
+                    $description = $isObject ? ($card->description ?? '') : ($card['description'] ?? '');
+                    $imageAlt = $isObject ? ($card->image_alt ?? $title) : ($card['image_alt'] ?? $title);
+                    $isFirst = $index === 0;
+                @endphp
+                <div class="journey-card opacity-0 relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform {{ $isFirst ? 'md:row-span-2 min-h-[380px] md:min-h-full' : 'h-[200px] sm:h-[225px]' }}">
+                    <img src="{{ $imageUrl }}"
+                        alt="{{ $imageAlt }}"
+                        loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 sm:p-6 text-white">
-                        <h3 class="text-base sm:text-lg font-bold text-white leading-tight">
-                            Energy Infrastructure
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 {{ $isFirst ? 'sm:p-6' : '' }} text-white">
+                        <h3 class="{{ $isFirst ? 'text-base sm:text-lg line-clamp-2' : 'text-sm sm:text-base line-clamp-1' }} font-bold text-white leading-tight">
+                            {{ $title }}
                         </h3>
-                        <p class="text-xs text-white/80 mt-1 leading-snug">
-                            Building safe energy networks for tomorrow.
+                        <p class="text-xs text-white/80 mt-1 leading-snug {{ $isFirst ? 'line-clamp-3' : 'line-clamp-2' }}">
+                            {{ $description }}
                         </p>
                     </div>
                 </div>
-            </div>
-
-            {{-- Column 2: People Behind Progress & Towards a Greener Future (Spans 4 cols on md+) --}}
-            <div class="md:col-span-4 flex flex-col gap-5">
-
-                {{-- Card 2: People Behind Progress --}}
-                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
-                    <img src="{{ asset('images/assets/journey_2.png') }}"
-                        alt="People Behind Progress"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                        <h3 class="text-sm sm:text-base font-bold text-white leading-tight">
-                            People Behind Progress
-                        </h3>
-                        <p class="text-xs text-white/80 mt-1 leading-snug">
-                            Our teams making a difference every day.
-                        </p>
-                    </div>
-                </div>
-
-                {{-- Card 3: Towards a Greener Future --}}
-                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
-                    <img src="{{ asset('images/assets/journey_3.png') }}"
-                        alt="Towards a Greener Future"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                        <h3 class="text-sm sm:text-base font-bold text-white leading-tight">
-                            Towards a Greener Future
-                        </h3>
-                        <p class="text-xs text-white/80 mt-1 leading-snug">
-                            Moving towards sustainable energy solutions.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- Column 3: Events & Engagements and Collaboration & Planning (Spans 4 cols on md+) --}}
-            <div class="md:col-span-4 flex flex-col gap-5">
-
-                {{-- Card 4: Events & Engagements --}}
-                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
-                    <img src="{{ asset('images/assets/journey_4.png') }}"
-                        alt="Events & Engagements"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                        <h3 class="text-sm sm:text-base font-bold text-white leading-tight">
-                            Events &amp; Engagements
-                        </h3>
-                        <p class="text-xs text-white/80 mt-1 leading-snug">
-                            Connecting people and ideas.
-                        </p>
-                    </div>
-                </div>
-
-                {{-- Card 5: Collaboration & Planning --}}
-                <div class="journey-card opacity-0 relative w-full h-[200px] sm:h-[225px] rounded-2xl md:rounded-3xl overflow-hidden shadow-xs border border-gray-100 group will-change-transform">
-                    <img src="{{ asset('images/assets/journey_5.png') }}"
-                        alt="Collaboration & Planning"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
-                        <h3 class="text-sm sm:text-base font-bold text-white leading-tight">
-                            Collaboration &amp; Planning
-                        </h3>
-                        <p class="text-xs text-white/80 mt-1 leading-snug">
-                            Working together towards shared goals.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
+            @endforeach
         </div>
 
     </div>

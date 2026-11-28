@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\HeroSlide;
+use App\Models\JourneyCard;
 use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 class HomePageTest extends TestCase
@@ -17,7 +19,7 @@ class HomePageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
-        $response->assertViewHasAll(['services', 'heroSlides', 'notices']);
+        $response->assertViewHasAll(['services', 'heroSlides', 'notices', 'journeyCards']);
     }
 
     public function test_homepage_displays_active_services_and_hero_slides(): void
@@ -55,5 +57,52 @@ class HomePageTest extends TestCase
 
         $viewWithEmpty = $this->blade('<x-hero-slider :slides="[]" />');
         $viewWithEmpty->assertSee('hero-shrink-container');
+    }
+
+    public function test_capturing_journey_component_renders_gracefully_with_empty_or_null_or_invalid_cards(): void
+    {
+        $viewWithNull = $this->blade('<x-capturing-journey :cards="null" />');
+        $viewWithNull->assertSee('Capturing Our');
+        $viewWithNull->assertSee('Explore Gallery');
+
+        $viewWithEmpty = $this->blade('<x-capturing-journey :cards="[]" />');
+        $viewWithEmpty->assertSee('Capturing Our');
+        $viewWithEmpty->assertSee('Explore Gallery');
+
+        $viewWithInvalid = $this->blade('<x-capturing-journey :cards="\'invalid-string\'" />');
+        $viewWithInvalid->assertSee('Capturing Our');
+        $viewWithInvalid->assertSee('Explore Gallery');
+    }
+
+    public function test_homepage_falls_back_to_default_journey_cards_when_database_empty(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Energy Infrastructure');
+        $response->assertSee('People Behind Progress');
+        $response->assertSee('Towards a Greener Future');
+    }
+
+    public function test_homepage_loads_only_latest_five_active_journey_cards(): void
+    {
+        for ($i = 1; $i <= 8; $i++) {
+            JourneyCard::create([
+                'title' => "Journey Card {$i}",
+                'description' => "Description {$i}",
+                'image_path' => "journey/test_{$i}.jpg",
+                'image_alt' => "Alt {$i}",
+                'order' => $i,
+                'is_active' => true,
+            ]);
+        }
+
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        /** @var Collection<int, JourneyCard> $cards */
+        $cards = $response->viewData('journeyCards');
+        $this->assertCount(5, $cards);
+        $this->assertSame('Journey Card 8', $cards->first()->title);
     }
 }

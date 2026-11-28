@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroSlideController;
+use App\Http\Controllers\Admin\JourneyCardController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Public\HomeController;
@@ -55,4 +56,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::put('/notices/{notice}', [NoticeController::class, 'update'])->name('notices.update');
     Route::delete('/notices/{notice}', [NoticeController::class, 'destroy'])->name('notices.destroy');
     Route::post('/notices/{notice}/toggle', [NoticeController::class, 'toggleStatus'])->name('notices.toggle');
+
+    // Capturing Our Journey Bento Cards Manager
+    Route::get('/journey-cards', [JourneyCardController::class, 'index'])->name('journey-cards.index');
+    Route::post('/journey-cards', [JourneyCardController::class, 'store'])->name('journey-cards.store');
+    Route::put('/journey-cards/{journeyCard}', [JourneyCardController::class, 'update'])->name('journey-cards.update');
+    Route::delete('/journey-cards/{journeyCard}', [JourneyCardController::class, 'destroy'])->name('journey-cards.destroy');
+    Route::post('/journey-cards/{journeyCard}/toggle', [JourneyCardController::class, 'toggleStatus'])->name('journey-cards.toggle');
 });

@@ -27,7 +27,7 @@
     <x-gallery />
 
     {{-- 10. Capturing Our Journey (5-Photo Bento Grid) --}}
-    <x-capturing-journey />
+    <x-capturing-journey :cards="$journeyCards ?? []" />
 
     {{-- 11. Frequently Asked Questions & Still Have Questions Banner --}}
     <x-faq-accordion />
