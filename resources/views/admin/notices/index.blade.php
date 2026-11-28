@@ -267,7 +267,7 @@
                     {{-- 4. Date & Time String --}}
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                            Display Date &amp; Time
+                            Display Date &amp; Time (Optional)
                         </label>
                         <input type="text" 
                                name="date_text" 

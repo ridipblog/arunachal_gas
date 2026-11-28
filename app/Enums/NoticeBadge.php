@@ -9,6 +9,7 @@ enum NoticeBadge: string
     case Important = 'IMPORTANT';
     case Notice = 'NOTICE';
     case Event = 'EVENT';
+    case News = 'NEWS';
 
     /**
      * Get the Tailwind styling classes for this badge.
@@ -21,6 +22,7 @@ enum NoticeBadge: string
             self::Important => 'bg-rose-50 text-rose-700 border-rose-200',
             self::Notice => 'bg-blue-50 text-blue-700 border-blue-200',
             self::Event => 'bg-purple-50 text-purple-700 border-purple-200',
+            self::News => 'bg-sky-50 text-sky-700 border-sky-200',
         };
     }
 }
