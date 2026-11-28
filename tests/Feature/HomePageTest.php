@@ -2,8 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Enums\NoticeBadge;
+use App\Enums\NoticeType;
 use App\Models\HeroSlide;
 use App\Models\JourneyCard;
+use App\Models\Notice;
 use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
@@ -104,5 +107,28 @@ class HomePageTest extends TestCase
         $cards = $response->viewData('journeyCards');
         $this->assertCount(5, $cards);
         $this->assertSame('Journey Card 8', $cards->first()->title);
+    }
+
+    public function test_homepage_loads_only_latest_four_active_notices(): void
+    {
+        for ($i = 1; $i <= 6; $i++) {
+            Notice::create([
+                'title' => "Notice {$i}",
+                'description' => "Notice description {$i}",
+                'type' => NoticeType::Notice,
+                'badge' => NoticeBadge::New,
+                'date_text' => 'Today',
+                'order' => $i,
+                'is_active' => true,
+            ]);
+        }
+
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        /** @var Collection<int, Notice> $notices */
+        $notices = $response->viewData('notices');
+        $this->assertCount(4, $notices);
+        $this->assertSame('Notice 6', $notices->first()->title);
     }
 }

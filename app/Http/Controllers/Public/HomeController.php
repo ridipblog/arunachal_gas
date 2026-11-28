@@ -34,8 +34,9 @@ class HomeController extends Controller
                 ->get();
 
             $notices = Notice::where('is_active', true)
-                ->orderBy('order')
-                ->orderBy('id')
+                ->latest()
+                ->orderByDesc('id')
+                ->take(4)
                 ->get();
 
             $journeyCards = JourneyCard::where('is_active', true)
