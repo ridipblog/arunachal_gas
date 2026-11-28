@@ -34,6 +34,18 @@ class AdminServiceTest extends TestCase
         $response->assertSee('Domestic PNG');
     }
 
+    public function test_admin_services_displays_error_component_when_controller_catches_error(): void
+    {
+        $view = $this->actingAs($this->admin)->view('admin.services.index', [
+            'services' => collect(),
+            'error' => 'Simulated database failure',
+        ]);
+
+        $view->assertSee('Failed to Load Services');
+        $view->assertSee('Simulated database failure');
+        $view->assertSee('Refresh Page');
+    }
+
     public function test_admin_can_create_a_new_service(): void
     {
         Storage::fake('public');

@@ -19,14 +19,19 @@ class ServiceController extends Controller
      */
     public function index(): View
     {
+        $error = null;
+        $errorDetails = null;
+
         try {
-            $services = Service::orderBy('order')->orderBy('id')->get();
+            $services = Service::orderBy('oder')->orderBy('id')->get();
         } catch (Throwable $e) {
             report($e);
             $services = collect();
+            $error = 'We are having trouble loading the services records right now. Please try refreshing the page.';
+            $errorDetails = $e->getMessage();
         }
 
-        return view('admin.services.index', compact('services'));
+        return view('admin.services.index', compact('services', 'error', 'errorDetails'));
     }
 
     /**

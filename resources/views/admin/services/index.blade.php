@@ -4,6 +4,13 @@
 @section('page_subtitle', 'Manage the interactive accordion cards, copy, badges and showcase images on the website')
 
 @section('content')
+@if (!empty($error))
+    <x-admin.error 
+        title="Failed to Load Services" 
+        :message="$error"
+        :details="$errorDetails ?? null" 
+    />
+@else
 <div x-data="serviceManager({
     storeUrl: '{{ route('admin.services.store') }}',
     baseUrl: '{{ url('admin/services') }}',
@@ -378,5 +385,6 @@
     </div>
 
 </div>
+@endif
 
 @endsection
